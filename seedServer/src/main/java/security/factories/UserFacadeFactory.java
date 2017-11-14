@@ -1,7 +1,8 @@
-package security;
+package security.factories;
 
 import facades.UserFacade;
 import javax.persistence.Persistence;
+import security.interfaces.IUserFacade;
 
 /**
  *

@@ -1,11 +1,11 @@
 package security;
 
+import security.interfaces.IUserFacade;
+import security.factories.UserFacadeFactory;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSVerifier;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.SignedJWT;
-import entity.User;
-import facades.UserFacade;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.security.Principal;
@@ -28,6 +28,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
+import rest.JSON.JSONUser;
 
 @Provider
 @Priority(Priorities.AUTHENTICATION)
@@ -89,9 +90,9 @@ public class JWTAuthenticationFilter implements ContainerRequestFilter {
 
   private UserPrincipal getPricipalByUserId(String userId) {
     IUserFacade facade = UserFacadeFactory.getInstance();
-    IUser user = facade.getUserByUserId(userId);
+    JSONUser user = facade.getUserByUserId(userId);
     if (user != null) {
-      return new UserPrincipal(user.getUserName(), user.getRolesAsStrings());
+      return new UserPrincipal(user.getUsername(), user.getRolesAsStrings());
     }
     return null;
   }
