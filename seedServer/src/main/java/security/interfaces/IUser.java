@@ -10,6 +10,8 @@ public interface IUser {
 
     void addRole(Role role);
 
+    void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException;
+        
     String getUserName();
 
     String getPasswordHash();
@@ -24,5 +26,4 @@ public interface IUser {
 
     List<Role> getRoles();
 
-    void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException;
 }
