@@ -32,6 +32,7 @@ public class Admin {
     }
 
     @PUT
+    @Path("user")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String editUser(String content) throws PasswordStorage.CannotPerformOperationException {

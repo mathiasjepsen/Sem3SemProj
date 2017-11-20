@@ -78,6 +78,7 @@ public class PlaceFacade implements IPlaceFacade {
             Place oldPlace = em.find(Place.class, editedPlace.getId());
             oldPlace.setRatings(editedPlace.getRatings());
             em.getTransaction().commit();
+            System.out.println("old place" + oldPlace);
             return new JSONPlace(oldPlace);
         } finally {
             em.close();

@@ -16,13 +16,13 @@ import security.factories.UserFacadeFactory;
 import security.interfaces.IUserFacade;
 
 @Path("user")
-@RolesAllowed("User")
 public class User {
 
     IUserFacade uf = UserFacadeFactory.getInstance();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
+    @RolesAllowed("Admin")
     @Produces(MediaType.APPLICATION_JSON)
     public String getUsers() {
         List<JSONUser> jsonUsers = uf.getUsers();
