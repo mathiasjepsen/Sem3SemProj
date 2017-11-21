@@ -1,0 +1,16 @@
+.calendarColumnWrapper {
+	border-top: 1px solid #aaaaaa; 
+	height: 60px;
+}
+
+.isAlreadyBooked li {
+	background-color: rgba(253, 189, 187, 1);
+}
+
+.weekHovered li {
+ 	background-color: rgba(199, 219, 244, 0.8);
+}
+
+.weekSelected li {
+ 	background-color: rgba(190, 240, 213, 0.8);
+}

@@ -1,0 +1,58 @@
+.dateWrapper,
+.bookLabelWrapper,
+.monthsNavigation {
+	display: inline-block;
+	width: 33%;
+}
+
+.dateWrapper .month, .year {
+	display: inline-block;
+  font-size: 24px;
+  margin-left: 6px;
+}
+
+.monthsNavigation {
+	line-height: 33px;
+	text-align: right;
+}
+
+.bookLabelWrapper {
+	line-height: 33px;
+	text-align: center;
+}
+
+.bookLabe {
+	background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+	color: #fff;
+  letter-spacing: 2px;
+  padding: 4px 16px;
+}
+
+.bookLabe.canBook {
+	background-color: #32CD32;
+	cursor: pointer;
+}
+
+.forwardButton {
+	margin-left: 3px;
+}
+
+.forwardButton:hover,
+.backButton:hover,
+.closeButton:hover {
+	cursor: pointer;
+}
+
+.loginErrorMessage {
+	color: red;
+	margin: 12px 0;
+	min-height: 18px;
+	text-align: center;
+}
+
+.closeButtonWrapper {
+	margin-bottom: 12px;
+  margin-right: 8px;
+  text-align: right;
+}

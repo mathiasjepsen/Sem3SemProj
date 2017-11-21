@@ -1,0 +1,23 @@
+{
+  "name": "calendar-booking-component",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "lodash": "4.17.4",
+    "prop-types": "15.6.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "react-modal": "^3.1.2",
+    "react-scripts": "1.0.14"
+  },
+  "devDependencies": {
+    "classnames": "2.2.5",
+    "node-sass": "4.6.1",
+    "sass-loader": "6.0.6",
+    "webpack": "3.8.1"
+  }
+}
