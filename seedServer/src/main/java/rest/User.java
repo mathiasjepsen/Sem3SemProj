@@ -29,7 +29,7 @@ public class User {
         List<JSONUser> jsonUsers = uf.getUsers();
         return GSON.toJson(jsonUsers);
     }
-    
+    //edit user put
     @PUT
     @Path("edit")
     @Produces(MediaType.APPLICATION_JSON)
