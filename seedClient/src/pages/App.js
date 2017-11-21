@@ -13,7 +13,6 @@ import CreateLocation from "./CreateLocation"
 import Rating from './Rating'
 import EditUser from './EditUser'
 
-
 function App() {
   return (
     <div>
