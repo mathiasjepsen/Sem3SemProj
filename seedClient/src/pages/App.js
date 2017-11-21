@@ -12,7 +12,6 @@ import Places from "./Places";
 import CreateLocation from "./CreateLocation"
 import Rating from './Rating'
 
-
 function App() {
   return (
     <div>
