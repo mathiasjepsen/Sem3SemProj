@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CalendarContainer from '../calendar/containers/CalendarContainer'
+import CalendarLayout from '../calendar/layouts/CalendarLayout'
 
 export default class Details extends React.Component {
     constructor(props) {
@@ -7,8 +9,9 @@ export default class Details extends React.Component {
     
     render() {
         return (
-            <div>
-            </div>
+            <CalendarLayout>
+                <CalendarContainer/>
+            </CalendarLayout>
         )
     }
 }

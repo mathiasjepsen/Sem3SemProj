@@ -3,7 +3,7 @@ import userFacade from '../facades/userFacade';
 import placeFacade from '../facades/placeFacade';
 import Rating from './Rating'
 import auth from '../authorization/auth'
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, Link } from 'react-router-dom';
 import Details from './Details';
 
 export default class Places extends React.Component {
@@ -89,11 +89,7 @@ export default class Places extends React.Component {
                                         <NavLink to={`/rate/${place.id}`}>rate this place</NavLink>
                                     }
                                     </td>
-                                    <Details
-                                        {...this.props}
-                                        place={place}
-                                    // user={this.state.user}
-                                    />
+                                    <td><Link to={"/details"}>Details</Link></td>
                                 </tr>
                             )
                         })}

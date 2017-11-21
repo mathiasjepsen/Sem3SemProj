@@ -23,7 +23,6 @@ export default class Rating extends React.Component {
         this.setState({ place })
     }
 
-
     handleChange = (e) => {
         var value = parseInt(e.target.value);
         var user = this.state.user;
