@@ -11,6 +11,7 @@ import AllUsers from './admin/AllUsers'
 import Places from "./Places";
 import CreateLocation from "./CreateLocation"
 import Rating from './Rating'
+import EditUser from './EditUser'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/places" component={Places} />
         <Route path="/createlocation" component={CreateLocation} />
         <Route path="/rate/:id" component={Rating} />
+        <Route path="/edit" component={EditUser}/>
       </Switch>
     </div>
   )
