@@ -59,7 +59,6 @@ class placeFacade extends React.Component {
     }
 
     fetchPlace = (id) => {
-        console.log("id", id)
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + 'api/place/' + id, options)
             .then((res) => {
@@ -67,7 +66,6 @@ class placeFacade extends React.Component {
             })
             .then((place) => {
                 this._place = place
-                console.log("Place in fetchplace", place)
                 if (this._ratingHandler) {
                     this._ratingHandler(place)
                 }

@@ -62,7 +62,6 @@ export default class Places extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.places.map((place, index) => {
-                            console.log("place obbject", place)
                             var x = Object.keys(place.ratings);
                             var alreadyRated = x.indexOf(this.state.userName)
                             return (
