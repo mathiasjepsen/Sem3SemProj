@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import rest.JSON.JSONUser;
@@ -29,7 +30,14 @@ public class User {
         List<JSONUser> jsonUsers = uf.getUsers();
         return GSON.toJson(jsonUsers);
     }
-    
+     @GET
+     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUser(@PathParam("id")String id) {
+        JSONUser jsonUser = uf.getUserByUserId(id);
+        return GSON.toJson(jsonUser);
+    }
+    //edit user put
     @PUT
     @Path("edit")
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,4 +56,5 @@ public class User {
         JSONUser jsonUser = uf.registerUser(GSON.fromJson(content, entity.User.class));
         return GSON.toJson(jsonUser);
     }
+    
 }
