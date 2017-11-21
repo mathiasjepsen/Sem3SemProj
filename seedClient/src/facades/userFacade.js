@@ -53,6 +53,29 @@ class UserStore {
             }
         })
     }
+    edit = (user) => {
+        fetch(URL + 'api/user/edit', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userName: user.username,
+                passwordHash: user.password,
+                fName: user.firstname,
+                lName: user.lastname,
+                phone: user.phone,
+                email: user.email
+            })
+        }).then((res) => {
+            return res.json()
+        }).then((data) => {
+            if (this._signupHandler) {
+                this._signupHandler(data)
+            }
+        })
+    }
 }
 
 let userStore = new UserStore();

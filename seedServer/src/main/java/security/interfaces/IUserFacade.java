@@ -15,5 +15,6 @@ public interface IUserFacade {
     List<JSONUser> getUsers();
     JSONUser getUserByUserId(String id);
     JSONUser registerUser(User user) throws PasswordStorage.CannotPerformOperationException;
+    JSONUser editUser (User user) throws PasswordStorage.CannotPerformOperationException;
     
 }

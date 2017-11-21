@@ -83,4 +83,20 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
+    
+    @Override
+    public JSONUser editUser(User user) throws PasswordStorage.CannotPerformOperationException {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Role existingRole = em.find(Role.class, "User");
+            user.createPasswordHash(user.getPasswordHash());
+            user.addRole(existingRole);
+            em.persist(user);
+            em.getTransaction().commit();
+            return new JSONUser(user);
+        } finally {
+            em.close();
+        }
+    }
 }
