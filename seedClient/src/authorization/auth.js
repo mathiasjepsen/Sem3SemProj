@@ -58,7 +58,6 @@ class AuthenticationHandler {
         }, this);
     }
 
-
     logout = () => {
         delete sessionStorage.token;
         this._token = null;

@@ -50,7 +50,6 @@ public class Place {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String addRate(String content) throws PasswordStorage.CannotPerformOperationException {
-        System.out.println("Place in addRate in rest.Place: " + content);
         JSONPlace place = pf.addRate(GSON.fromJson(content, entity.Place.class));
         return GSON.toJson(place);
     }

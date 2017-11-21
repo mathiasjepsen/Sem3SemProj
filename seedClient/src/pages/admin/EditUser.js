@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import adminFacade from "../../facades/adminFacade";
+import { Link } from 'react-router-dom'
 
 class EditUser extends Component {
     constructor() {
         super()
         this.state = {
             username: "",
-            password: "",
             fName: "",
             lName: "",
             phone: "",
@@ -15,11 +15,20 @@ class EditUser extends Component {
     }
 
     componentDidMount() {
-        const user = this.props.user
+        this.loadUser()
+    }
+
+    componentWillReceiveProps() {
+        this.loadUser()
+    }
+
+    loadUser = () => {
+        const user = this.props.users.filter((user) => {
+            return user.username === this.props.match.params.username
+        })[0]
 
         this.setState({
             username: user.username,
-            password: user.password,
             fName: user.fName,
             lName: user.lName,
             phone: user.phone,
@@ -36,7 +45,6 @@ class EditUser extends Component {
     onSubmit = (e) => {
         const user = {
             username: this.state.username,
-            password: this.state.password,
             fName: this.state.fName,
             lName: this.state.lName,
             phone: this.state.phone,
@@ -52,13 +60,16 @@ class EditUser extends Component {
             <div>
                 <form className="form-horizontal" onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <div className="col-sm-12">
-                            <input className="form-control" readOnly id="username" name="username" value={this.state.username} />
+                        <div className="col-xs-6">
+                            <label>Edit Existing User</label>
+                        </div>
+                        <div className="col-xs-4 col-xs-offset-2">
+                            <Link to={"/allUsers"}>Create User</Link>
                         </div>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12">
-                            <input className="form-control" id="password" name="password" placeholder="Enter password" value={this.state.password} onChange={this.onChange} />
+                            <input className="form-control" readOnly id="username" name="username" value={this.state.username} />
                         </div>
                     </div>
                     <div className="form-group">

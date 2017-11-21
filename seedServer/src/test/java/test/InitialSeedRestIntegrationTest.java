@@ -58,6 +58,7 @@ public class InitialSeedRestIntegrationTest {
     }
 
     @Test
+    @Ignore
     public void testRestNoAuthenticationRequired() {
         given()
                 .contentType("application/json")
