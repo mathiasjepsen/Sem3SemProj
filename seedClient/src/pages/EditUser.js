@@ -5,9 +5,12 @@ import auth from "../authorization/auth";
 class EditUser extends Component {
     constructor() {
         super();
-        this.state = { err: "", user: { firstname: "", lastname: "", username: "", email: "", phone: "", password: "" } }
+        this.state = { err: "", user: { loggedIn: auth.loggedIn, firstname: "", lastname: "", userName: auth.userName, email: "", phone: "", password: "" } }
     }
 
+    componentDidMount() {
+        userFacade.setEditObserver(this.editHandler)
+    }
 
     editHandler = (data) => {
         auth.login(this.state.user.username, this.state.user.password, (err, loggedIn) => {
@@ -21,7 +24,7 @@ class EditUser extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        userFacade.EditUser(this.state.user);
+        userFacade.signUp(this.state.user);
     }
 
 
@@ -34,13 +37,15 @@ class EditUser extends Component {
         this.setState({ user })
     }
 
+
     render() {
+        const logInStatus = this.state.loggedIn ? "Logged in as: " + this.state.userName : "lovro";
         return (
             <div className="container">
                 <form className="form-signin" onSubmit={this.handleSubmit}>
                     <h2 className="form-signin-heading">Edit information</h2>
                     <label htmlFor="inputUserName" className="sr-only">User Name</label>
-                    <input type="text" value={this.state.user.username} onChange={this.onChange} className="form-control" id="username" placeholder={this.state.user.username} required autoFocus />
+                    <input type="text" value={this.state.user.userΝame} onChange={this.onChange} className="form-control" id="username" placeholder={logInStatus} required autoFocus />
                     <label htmlFor="inputFirstName" className="sr-only">First Name</label>
                     <input type="text" value={this.state.user.firstname} onChange={this.onChange} className="form-control" id="firstname" placeholder="First Name" required autoFocus />
                     <label htmlFor="inputLasttName" className="sr-only">Last Name</label>
@@ -51,7 +56,7 @@ class EditUser extends Component {
                     <input type="text" value={this.state.user.phone} onChange={this.onChange} className="form-control" id="phone" placeholder="Phone" required autoFocus />
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
                     <input type="password" value={this.state.user.password} onChange={this.onChange} className="form-control" id="password" placeholder="Password" required />
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
                     <br />
                 </form>
                 {this.state.err && (
