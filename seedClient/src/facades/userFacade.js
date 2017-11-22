@@ -15,7 +15,8 @@ class UserStore {
     setSignupObserver = (handler) => {
         this._signupHandler = handler
     }
-    setEditObserver = (handler) => {
+
+    setEditUserObserver = (handler) => {
         this._editHandler = handler
     }
 
@@ -32,13 +33,18 @@ class UserStore {
                 }
             })
     }
+
     getUser = (username) => {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + "api/user/" + username, options)
-            .then((res) => {
-               // console.log("res ",res.json())
-                return res.json()
-            })
+        .then((res) => {
+            return res.json()
+        })
+        .then((user) => {
+                this._user = user
+                if (this._editHandler) {
+                    this._editHandler(user)
+                }        })
     }
 
     signUp = (user) => {

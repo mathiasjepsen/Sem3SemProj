@@ -30,12 +30,13 @@ public class User {
         List<JSONUser> jsonUsers = uf.getUsers();
         return GSON.toJson(jsonUsers);
     }
-      @GET
+    
+    @GET
     @Path("{username}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getUser(@PathParam("username") String username) {
        JSONUser jsonUser = uf.getUserByUserName(username);
-          System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAa" + GSON.toJson(jsonUser));
+          System.out.println("in get Rest" + GSON.toJson(jsonUser));
         return GSON.toJson(jsonUser);
     }
     

@@ -9,19 +9,20 @@ class EditUser extends Component {
     }
 
     componentDidMount() {
-        const user =  userFacade.getUser(this.state.username)
-        console.log ("user ",this.state.username)
-       // this.setState = {fName: user.fName }
-        
-        
+        userFacade.setEditUserObserver(this.editHandler)
+        const user =  userFacade.getUser(auth.userName);
     }
 
-/*
-    editHandler = () => {
-       const user =  userFacade.getUser(this.state.username)
+    editHandler = (user) => {
+       this.setState({
+           fName: user.fName,
+           lName: user.lName,
+           username: user.username,
+           email: user.email,
+           phone: user.phone
+       })
     }
 
-*/
 
 
     onSubmit = (e) => {
