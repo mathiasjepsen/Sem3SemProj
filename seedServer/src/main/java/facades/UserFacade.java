@@ -89,12 +89,14 @@ public class UserFacade implements IUserFacade {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            Role existingRole = em.find(Role.class, "User");
-            user.createPasswordHash(user.getPasswordHash());
-            user.addRole(existingRole);
-            em.persist(user);
+            User oldUser = em.find(User.class, user.getUserName());
+            oldUser.createPasswordHash(user.getPasswordHash());
+            oldUser.setfName(user.getfName());
+            oldUser.setlName(user.getlName());
+            oldUser.setEmail(user.getEmail());
+            oldUser.setPhone(user.getPhone());
             em.getTransaction().commit();
-            return new JSONUser(user);
+            return new JSONUser(oldUser);
         } finally {
             em.close();
         }

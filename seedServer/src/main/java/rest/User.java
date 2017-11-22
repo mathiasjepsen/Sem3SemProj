@@ -47,6 +47,7 @@ public class User {
     public String editUser(String content) throws PasswordStorage.CannotPerformOperationException
     {
         JSONUser jsonUser = uf.editUser(GSON.fromJson(content, entity.User.class));
+        System.out.println("in editUser" + GSON.toJson(jsonUser));
         return GSON.toJson(jsonUser); 
     }
     

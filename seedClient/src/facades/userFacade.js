@@ -81,7 +81,8 @@ class UserStore {
                 fName: user.fName,
                 lName: user.lName,
                 phone: user.phone,
-                email: user.email
+                email: user.email,          
+                password: user.password
             })
         })
     }

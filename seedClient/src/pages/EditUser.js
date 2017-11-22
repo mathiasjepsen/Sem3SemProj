@@ -5,7 +5,7 @@ import auth from "../authorization/auth";
 class EditUser extends Component {
     constructor() {
         super();
-        this.state = { fName: "", lName: "", username: "", email: "", phone: ""}
+        this.state = { fName: "", lName: "", username: "", email: "", phone: "", password: ""}
     }
 
     componentDidMount() {
@@ -31,7 +31,8 @@ class EditUser extends Component {
             fName: this.state.fName,
             lName: this.state.lName,
             phone: this.state.phone,
-            email: this.state.email
+            email: this.state.email,
+            password: this.state.password
         }
         
 

@@ -23,7 +23,6 @@ public class ApplicationConfig extends Application {
         resources.add(httpErrors.GenericExceptionMapper.class);
         resources.add(httpErrors.NotFoundExceptionMapper.class);
         resources.add(rest.Admin.class);
-        resources.add(MultiPartFeature.class);
         resources.add(rest.Place.class);
         resources.add(rest.Uploadimage.class);
         resources.add(rest.User.class);
@@ -31,6 +30,7 @@ public class ApplicationConfig extends Application {
         resources.add(security.Login.class);
         resources.add(security.NotAuthorizedExceptionMapper.class);
         resources.add(security.RolesAllowedFilter.class);
+        resources.add(MultiPartFeature.class);
     }
 
 }
