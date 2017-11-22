@@ -27,10 +27,10 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public JSONUser getUserByUserId(String id) {
+    public JSONUser getUserByUserName(String username) {
         EntityManager em = getEntityManager();
         try {
-            IUser user = em.find(User.class, id);
+            IUser user = em.find(User.class, username);
             return new JSONUser(user);
         } finally {
             em.close();

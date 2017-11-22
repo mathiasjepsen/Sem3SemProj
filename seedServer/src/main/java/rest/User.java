@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import rest.JSON.JSONUser;
@@ -28,6 +29,13 @@ public class User {
     public String getUsers() {
         List<JSONUser> jsonUsers = uf.getUsers();
         return GSON.toJson(jsonUsers);
+    }
+      @GET
+    @Path("{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUser(@PathParam("username") String username) {
+       JSONUser jsonUser = uf.getUserByUserName(username);
+        return GSON.toJson(jsonUser);
     }
     
     @PUT

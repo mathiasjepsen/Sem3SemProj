@@ -15,6 +15,9 @@ class UserStore {
     setSignupObserver = (handler) => {
         this._signupHandler = handler
     }
+    setEditObserver = (handler) => {
+        this._editHandler = handler
+    }
 
     getAllUsers = () => {
         const options = fetchHelper.makeOptions("GET", true);
@@ -27,6 +30,13 @@ class UserStore {
                 if (this._usersHandler) {
                     this._usersHandler(users)
                 }
+            })
+    }
+    getUser = (username) => {
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + "api/user" + username, options)
+            .then((res) => {
+                return res.json()
             })
     }
 
@@ -53,31 +63,22 @@ class UserStore {
             }
         })
     }
-    edit = (user) => {
-        fetch(URL + 'api/user/edit', {
+    editUser = (user) => {
+        const options = fetchHelper.makeOptions("PUT", true);
+        fetch(URL + "api/user/edit", {
             method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+            headers: options.headers,
             body: JSON.stringify({
                 userName: user.username,
                 passwordHash: user.password,
-                fName: user.firstname,
-                lName: user.lastname,
+                fName: user.fName,
+                lName: user.lName,
                 phone: user.phone,
                 email: user.email
             })
-        }).then((res) => {
-            return res.json()
-        }).then((data) => {
-            if (this._signupHandler) {
-                this._signupHandler(data)
-            }
         })
     }
 }
-
 let userStore = new UserStore();
 
 //Only for debugging
