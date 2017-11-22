@@ -75,8 +75,8 @@ export default class AllUsers extends Component {
                                             <td>{user.lName}</td>
                                             <td>{user.phone}</td>
                                             <td>{user.email}</td>
-                                            <td><Link to={`${this.props.match.url}/${user.username}`}>Edit User</Link></td>
-                                            <td><button onClick={this.onDelete} id={user.username}>delete</button></td>
+                                            <td><Link className="btn btn-default" to={`${this.props.match.url}/${user.username}`}>Edit User</Link></td>
+                                            <td><button className="btn btn-default" onClick={this.onDelete} id={user.username}>delete</button></td>
                                         </tr>
                                     )
                                 })}
