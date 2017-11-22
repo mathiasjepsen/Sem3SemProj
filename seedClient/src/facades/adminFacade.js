@@ -1,4 +1,5 @@
-import fetchHelper, { errorChecker } from "./fetchHelpers"
+import fetchHelper, { errorChecker } from "./fetchHelpers";
+import userFacade from "./userFacade"; //what if no handler in user facade
 const URL = require("../../package.json").serverURL;
 
 
@@ -23,7 +24,7 @@ class AdminStore {
                 email: user.email
             })
         }).then(() => {
-            this.getAllUsers()
+            userFacade.getAllUsers()
         })
     }
 
@@ -33,7 +34,7 @@ class AdminStore {
             method: 'DELETE',
             headers: options.headers
         }).then(() => {
-            this.getAllUsers()
+            userFacade.getAllUsers()
         })
     }
 
@@ -51,7 +52,7 @@ class AdminStore {
                 email: user.email
             })
         }).then(() => {
-            this.getAllUsers()
+            userFacade.getAllUsers()
         })
     }
 }

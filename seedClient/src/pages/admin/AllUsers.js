@@ -40,6 +40,11 @@ export default class AllUsers extends Component {
         })
     }
 
+    onDelete = (target) => {
+        adminFacade.deletePerson(target.target.id)
+        target.preventDefault()
+    }
+
     addUser = (user) => {
         adminFacade.addUser(user)
     }
@@ -71,6 +76,7 @@ export default class AllUsers extends Component {
                                             <td>{user.phone}</td>
                                             <td>{user.email}</td>
                                             <td><Link to={`${this.props.match.url}/${user.username}`}>Edit User</Link></td>
+                                            <td><button onClick={this.onDelete} id={user.username}>delete</button></td>
                                         </tr>
                                     )
                                 })}
