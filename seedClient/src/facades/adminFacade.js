@@ -1,4 +1,5 @@
 import fetchHelper, { errorChecker } from "./fetchHelpers"
+import userFacade from './userFacade'
 const URL = require("../../package.json").serverURL;
 
 
@@ -23,7 +24,7 @@ class AdminStore {
                 email: user.email
             })
         }).then(() => {
-            this.getAllUsers()
+            userFacade.getAllUsers()
         })
     }
 
