@@ -5,16 +5,24 @@ import auth from "../authorization/auth";
 class EditUser extends Component {
     constructor() {
         super();
-        this.state = { fName: "", lName: "", username: auth.userName, email: "", phone: ""}
+        this.state = { fName: "", lName: "", username: "", email: "", phone: ""}
     }
 
     componentDidMount() {
-     userFacade.setEditObserver(this.editHandler)
+        const user =  userFacade.getUser(this.state.username)
+        console.log ("user ",this.state.username)
+       // this.setState = {fName: user.fName }
+        
+        
     }
 
+/*
     editHandler = () => {
-        userFacade.getUser(this.state.username)
+       const user =  userFacade.getUser(this.state.username)
     }
+
+*/
+
 
     onSubmit = (e) => {
         const user = {
@@ -24,10 +32,12 @@ class EditUser extends Component {
             phone: this.state.phone,
             email: this.state.email
         }
+        
 
         userFacade.editUser(user)
         e.preventDefault()
     }
+
 
 
     onChange = (e) => {

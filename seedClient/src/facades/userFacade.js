@@ -34,8 +34,9 @@ class UserStore {
     }
     getUser = (username) => {
         const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + "api/user" + username, options)
+        fetch(URL + "api/user/" + username, options)
             .then((res) => {
+               // console.log("res ",res.json())
                 return res.json()
             })
     }

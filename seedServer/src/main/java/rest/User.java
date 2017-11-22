@@ -35,6 +35,7 @@ public class User {
     @Produces(MediaType.APPLICATION_JSON)
     public String getUser(@PathParam("username") String username) {
        JSONUser jsonUser = uf.getUserByUserName(username);
+          System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAa" + GSON.toJson(jsonUser));
         return GSON.toJson(jsonUser);
     }
     
