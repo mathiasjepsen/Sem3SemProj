@@ -25,6 +25,7 @@ public class ApplicationConfig extends Application {
         resources.add(MultiPartFeature.class);
         resources.add(rest.Admin.class);
         resources.add(rest.Place.class);
+        resources.add(MultiPartFeature.class);
         resources.add(rest.Uploadimage.class);
         resources.add(rest.User.class);
         resources.add(security.JWTAuthenticationFilter.class);
