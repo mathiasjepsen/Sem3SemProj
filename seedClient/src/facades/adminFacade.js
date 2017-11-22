@@ -34,7 +34,7 @@ class AdminStore {
             method: 'DELETE',
             headers: options.headers
         }).then(() => {
-            this.getAllUsers()
+            userFacade.getAllUsers()
         })
     }
 
@@ -52,7 +52,7 @@ class AdminStore {
                 email: user.email
             })
         }).then(() => {
-            this.getAllUsers()
+            userFacade.getAllUsers()
         })
     }
 }
