@@ -7,6 +7,7 @@ class EditUser extends Component {
         super()
         this.state = {
             username: "",
+            password: "",
             fName: "",
             lName: "",
             phone: "",
@@ -29,6 +30,7 @@ class EditUser extends Component {
 
         this.setState({
             username: user.username,
+            password: user.passwordHash,
             fName: user.fName,
             lName: user.lName,
             phone: user.phone,
@@ -45,13 +47,15 @@ class EditUser extends Component {
     onSubmit = (e) => {
         const user = {
             username: this.state.username,
+            password: this.state.password,
             fName: this.state.fName,
             lName: this.state.lName,
             phone: this.state.phone,
             email: this.state.email
         }
 
-        adminFacade.editUser(user)
+        adminFacade.editUser(user) 
+        this.props.history.push("/allUsers");
         e.preventDefault()
     }
 

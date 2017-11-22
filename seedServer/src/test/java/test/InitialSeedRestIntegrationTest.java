@@ -17,7 +17,7 @@ import test.utils.EmbeddedTomcat;
 public class InitialSeedRestIntegrationTest {
 
     private static final int SERVER_PORT = 9999;
-    private static final String APP_CONTEXT = "/seedServer";
+    private static final String APP_CONTEXT = "/seedMaven";
     private static EmbeddedTomcat tomcat;
 
     public InitialSeedRestIntegrationTest() {
@@ -26,7 +26,7 @@ public class InitialSeedRestIntegrationTest {
 
     //Utility method to login and set the securityToken
     private static void login(String username, String password) {
-        String json = String.format("{username: \"%s\", password: \"%s\"}", username, password);
+        String json = String.format("{\"username\": \"%s\", \"password\": \"%s\"}", username, password);
         System.out.println(json);
         securityToken = given()
                 .contentType("application/json")
@@ -35,7 +35,10 @@ public class InitialSeedRestIntegrationTest {
                 .then()
                 .extract().path("token");
         System.out.println("Token: " + securityToken);
-
+        System.out.println(given()
+                .contentType("application/json")
+                .body(json)
+                .when().post("/api/login").asString());
     }
 
     private void logOut() {
@@ -58,7 +61,6 @@ public class InitialSeedRestIntegrationTest {
     }
 
     @Test
-    @Ignore
     public void testRestNoAuthenticationRequired() {
         given()
                 .contentType("application/json")
@@ -68,9 +70,8 @@ public class InitialSeedRestIntegrationTest {
     }
 
     @Test
-    @Ignore
     public void tesRestForAdmin() {
-        login("admin", "test");
+        login("admin", "1234");
         given()
                 .contentType("application/json")
                 .header("Authorization", "Bearer " + securityToken)

@@ -41,12 +41,21 @@ export default class AllUsers extends Component {
     }
 
     onDelete = (target) => {
-        adminFacade.deletePerson(target.target.id)
+        adminFacade.deleteUser(target.target.id)
         target.preventDefault()
     }
 
     addUser = (user) => {
         adminFacade.addUser(user)
+        this.setState({
+            username: "",
+            password: "",
+            fName: "",
+            lName: "",
+            phone: "",
+            email: "",
+        })
+        
     }
 
     render() {
@@ -75,8 +84,8 @@ export default class AllUsers extends Component {
                                             <td>{user.lName}</td>
                                             <td>{user.phone}</td>
                                             <td>{user.email}</td>
-                                            <td><Link to={`${this.props.match.url}/${user.username}`}>Edit User</Link></td>
-                                            <td><button onClick={this.onDelete} id={user.username}>delete</button></td>
+                                            <td><Link className="btn btn-info" to={`${this.props.match.url}/${user.username}`}>Edit User</Link></td>
+                                            <td><button className="btn btn-danger" onClick={this.onDelete} id={user.username}>delete</button></td>
                                         </tr>
                                     )
                                 })}
@@ -85,7 +94,20 @@ export default class AllUsers extends Component {
                     </div>
                     <div className="col-xs-4 col-xs-offset-4">
                         <Switch>
-                            <Route exact path={`${this.props.match.url}`} component={AddUser} />
+                            <Route exact path={`${this.props.match.url}`} render={(props) => {
+                                return (
+                                    <AddUser
+                                        {...props}
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        fName={this.state.fName}
+                                        lName={this.state.lName}
+                                        phone={this.state.phone}
+                                        email={this.state.email}
+                                        handleChange={this.handleChange}
+                                        handleSubmit={this.addUser} />
+                                )
+                            }} />
                             <Route path={`${this.props.match.url}/:username`} render={(props) => {
                                 return (
                                     <EditUser

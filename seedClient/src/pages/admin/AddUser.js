@@ -6,6 +6,8 @@ class AddUser extends Component {
     }
 
     onSubmit = (e) => {
+        e.preventDefault()   
+
         const user = {
             username: this.props.username,
             password: this.props.password,
@@ -16,7 +18,6 @@ class AddUser extends Component {
         }
 
         this.props.handleSubmit(user)
-        e.preventDefault()
     }
 
     onChange = (e) => {
@@ -24,10 +25,9 @@ class AddUser extends Component {
     }
 
     render() {
-        console.log("rendering adduser")
         return (
             <div>
-                <form className="form-horizontal" onSubmit={this.onSubmit}>
+                <form method="POST" className="form-horizontal" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <div className="col-sm-12">
                             <label>Create New User</label>
@@ -65,7 +65,7 @@ class AddUser extends Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12">
-                            <button type="submit" className="btn btn-default">Submit</button>
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
