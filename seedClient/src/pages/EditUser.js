@@ -35,7 +35,6 @@ class EditUser extends Component {
         }
         
         userFacade.editUser(user)
-        alert("Changes Confirmed")
         this.props.history.push("/places");
         e.preventDefault()
   
