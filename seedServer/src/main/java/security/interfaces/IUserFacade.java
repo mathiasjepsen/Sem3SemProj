@@ -13,7 +13,7 @@ public interface IUserFacade {
 
     List<String> authenticateUser(String userName, String password);
     List<JSONUser> getUsers();
-    JSONUser getUserByUserId(String id);
+    JSONUser getUserByUserName(String username);
     JSONUser registerUser(User user) throws PasswordStorage.CannotPerformOperationException;
     JSONUser editUser (User user) throws PasswordStorage.CannotPerformOperationException;
     
