@@ -61,9 +61,9 @@ export default class AllUsers extends Component {
         return (
             <div>
                 {this.state.isAdmin ?
-                    <div className="col-xs-12">
+                    <div className="row">
                         <div className="col-xs-4">
-                            <table className="table">
+                            <table className="table table-responsive">
                                 <thead>
                                     <tr>
                                         <td>Username</td>
@@ -129,7 +129,6 @@ export default class AllUsers extends Component {
             </div>
         )
     }
-
 }
 
 
