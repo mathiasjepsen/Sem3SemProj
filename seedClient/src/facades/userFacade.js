@@ -56,7 +56,6 @@ class UserStore {
             },
             body: JSON.stringify({
                 userName: user.username,
-                passwordHash: user.password,
                 fName: user.firstname,
                 lName: user.lastname,
                 phone: user.phone,
@@ -72,6 +71,7 @@ class UserStore {
     }
     editUser = (user) => {
         const options = fetchHelper.makeOptions("PUT", true);
+        console.log("user", user)
         fetch(URL + "api/user/edit", {
             method: 'PUT',
             headers: options.headers,

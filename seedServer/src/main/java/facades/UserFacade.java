@@ -90,7 +90,6 @@ public class UserFacade implements IUserFacade {
         try {
             em.getTransaction().begin();
             User oldUser = em.find(User.class, user.getUserName());
-            oldUser.createPasswordHash(user.getPasswordHash());
             oldUser.setfName(user.getfName());
             oldUser.setlName(user.getlName());
             oldUser.setEmail(user.getEmail());

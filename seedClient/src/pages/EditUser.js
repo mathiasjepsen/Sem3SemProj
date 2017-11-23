@@ -5,7 +5,7 @@ import auth from "../authorization/auth";
 class EditUser extends Component {
     constructor() {
         super();
-        this.state = { fName: "", lName: "", username: "", email: "", phone: "", password: ""}
+        this.state = { fName: "", lName: "", username: "", email: "", phone: ""}
     }
 
     componentDidMount() {
@@ -32,10 +32,8 @@ class EditUser extends Component {
             lName: this.state.lName,
             phone: this.state.phone,
             email: this.state.email,
-            password: this.state.password
         }
         
-
         userFacade.editUser(user)
         e.preventDefault()
     }
