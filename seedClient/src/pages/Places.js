@@ -89,11 +89,6 @@ export default class Places extends React.Component {
                                         <NavLink to={`/rate/${place.id}`}>rate this place</NavLink>
                                     }
                                     </td>
-                                    <Details
-                                        {...this.props}
-                                        place={place}
-                                    // user={this.state.user}
-                                    />
                                 </tr>
                             )
                         })}
