@@ -50,6 +50,7 @@ public class DeploymentConfiguration implements ServletContextListener {
     }
 //    ServletContext context = sce.getServletContext();
 // 
+
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
@@ -109,10 +110,17 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        } finally {
 //            em.close();
 //        }
-  }
 
+//  }
+//
+
+}
+  
   @Override
   public void contextDestroyed(ServletContextEvent sce) {
 
   }
+
+   
 }
+
