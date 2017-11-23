@@ -35,6 +35,8 @@ class EditUser extends Component {
         }
         
         userFacade.editUser(user)
+        prompt(alert("Changes Confirmed"))
+        this.props.history.push("/places");
         e.preventDefault()
     }
 
@@ -46,8 +48,12 @@ class EditUser extends Component {
         })
     }
 render() {
+    const isLoggedIn = auth.isloggedIn
     return (
+        
         <div>
+            {
+                isLoggedIn ? (
             <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <div className="col-xs-6">
@@ -85,8 +91,12 @@ render() {
                     </div>
                 </div>
             </form>
+                ):(<div class="alert alert-danger">
+                <strong>Sorry!</strong> You are not logged in.
+              </div>)}
         </div>
     )
+    
 }
 }
 
