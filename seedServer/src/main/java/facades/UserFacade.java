@@ -27,10 +27,10 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public JSONUser getUserByUserId(String id) {
+    public JSONUser getUserByUserName(String username) {
         EntityManager em = getEntityManager();
         try {
-            IUser user = em.find(User.class, id);
+            IUser user = em.find(User.class, username);
             return new JSONUser(user);
         } finally {
             em.close();
@@ -89,9 +89,13 @@ public class UserFacade implements IUserFacade {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(user);
+            User oldUser = em.find(User.class, user.getUserName());
+            oldUser.setfName(user.getfName());
+            oldUser.setlName(user.getlName());
+            oldUser.setEmail(user.getEmail());
+            oldUser.setPhone(user.getPhone());
             em.getTransaction().commit();
-            return new JSONUser(user);
+            return new JSONUser(oldUser);
         } finally {
             em.close();
         }

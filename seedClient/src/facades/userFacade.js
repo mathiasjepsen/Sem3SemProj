@@ -19,6 +19,10 @@ class UserStore {
         this._editHandler = handler
     }
 
+    setEditUserObserver = (handler) => {
+        this._editHandler = handler
+    }
+
     getAllUsers = () => {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + "api/user", options)
@@ -41,6 +45,19 @@ class UserStore {
     }
 
 
+    getUser = (username) => {
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + "api/user/" + username, options)
+        .then((res) => {
+            return res.json()
+        })
+        .then((user) => {
+                this._user = user
+                if (this._editHandler) {
+                    this._editHandler(user)
+                }        })
+    }
+
     signUp = (user) => {
         fetch(URL + 'api/user', {
             method: 'POST',
@@ -50,7 +67,6 @@ class UserStore {
             },
             body: JSON.stringify({
                 userName: user.username,
-                passwordHash: user.password,
                 fName: user.firstname,
                 lName: user.lastname,
                 phone: user.phone,
@@ -66,6 +82,7 @@ class UserStore {
     }
     editUser = (user) => {
         const options = fetchHelper.makeOptions("PUT", true);
+        console.log("user", user)
         fetch(URL + "api/user/edit", {
             method: 'PUT',
             headers: options.headers,
@@ -75,14 +92,12 @@ class UserStore {
                 fName: user.fName,
                 lName: user.lName,
                 phone: user.phone,
-                email: user.email
+                email: user.email,          
+                password: user.password
             })
-        }).then(() => {
-            this.getAllUsers()
         })
     }
 }
-
 let userStore = new UserStore();
 
 //Only for debugging
