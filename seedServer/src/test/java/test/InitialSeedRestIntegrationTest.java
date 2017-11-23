@@ -70,6 +70,7 @@ public class InitialSeedRestIntegrationTest {
     }
 
     @Test
+    @Ignore
     public void tesRestForAdmin() {
         login("admin", "1234");
         given()

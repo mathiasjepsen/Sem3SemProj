@@ -60,7 +60,7 @@ export default class AllUsers extends Component {
     render() {
         return (
             <div>
-                {this.state.isAdmin &&
+                {this.state.isAdmin ?
                     <div className="col-xs-12">
                         <div className="col-xs-4">
                             <table className="table">
@@ -120,6 +120,10 @@ export default class AllUsers extends Component {
                                 }} />
                             </Switch>
                         </div>
+                    </div>
+                    :
+                    <div class="alert alert-danger">
+                        <strong>Sorry!</strong> You need to be logged in to access this page.
                     </div>
                 }
             </div>
