@@ -48,7 +48,7 @@ public class DeploymentConfiguration implements ServletContextListener {
     } catch (IOException ex) {
       Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
     }
-    ServletContext context = sce.getServletContext();
+ //   ServletContext context = sce.getServletContext();
  
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
@@ -109,10 +109,16 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        } finally {
 //            em.close();
 //        }
-  }
+//  }
+//
 
+}
+  
   @Override
   public void contextDestroyed(ServletContextEvent sce) {
 
   }
+
+   
 }
+

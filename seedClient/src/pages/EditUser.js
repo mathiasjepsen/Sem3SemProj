@@ -38,8 +38,8 @@ class EditUser extends Component {
         prompt(alert("Changes Confirmed"))
         this.props.history.push("/places");
         e.preventDefault()
+  
     }
-
 
 
     onChange = (e) => {

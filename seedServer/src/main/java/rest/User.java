@@ -40,6 +40,7 @@ public class User {
         return GSON.toJson(jsonUser);
     }
     
+    //edit user put
     @PUT
     @Path("edit")
     @Produces(MediaType.APPLICATION_JSON)
@@ -58,4 +59,5 @@ public class User {
         JSONUser jsonUser = uf.registerUser(GSON.fromJson(content, entity.User.class));
         return GSON.toJson(jsonUser);
     }
+    
 }
