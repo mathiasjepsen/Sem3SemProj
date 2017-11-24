@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import placeFacade from '../facades/placeFacade'
-import auth from "../authorization/auth";
+import placeFacade from '../../facades/placeFacade'
+import auth from "../../authorization/auth";
 
 class CreateLocation extends Component {
     constructor() {

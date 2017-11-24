@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import userFacade from '../facades/userFacade';
-import placeFacade from '../facades/placeFacade';
-import Rating from './Rating'
-import auth from '../authorization/auth'
+import userFacade from '../../facades/userFacade';
+import placeFacade from '../../facades/placeFacade';
+import Rating from '../place/Rating'
+import auth from '../../authorization/auth'
 import { NavLink, Route } from 'react-router-dom';
-import Details from './Details';
+import Details from '../place/Details';
 
 export default class Places extends React.Component {
     constructor() {
         super();
         this.state = {
-            //user:,
             places: [],
             userName: auth.userName
         }
@@ -20,7 +19,6 @@ export default class Places extends React.Component {
         placeFacade.setPlaceObserver(this.placesUpdater)
         placeFacade.setSortObserver(this.placesUpdater)
         placeFacade.fetchPlaces()
-        //fetch user
     }
 
     placesUpdater = (places) => {

@@ -2,10 +2,7 @@ import fetchHelper, { errorChecker } from "./fetchHelpers"
 import React from 'react';
 const URL = require("../../package.json").serverURL
 
-class placeFacade extends React.Component {
-    constructor() {
-        super()
-    }
+class placeFacade {
 
     setSortObserver = (handler) => {
         this._sortHandler = handler

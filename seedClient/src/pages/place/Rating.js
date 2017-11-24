@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import placeFacade from '../facades/placeFacade';
-import auth from '../authorization/auth'
+import placeFacade from '../../facades/placeFacade';
+import auth from '../../authorization/auth'
 
 export default class Rating extends React.Component {
     constructor(props) {

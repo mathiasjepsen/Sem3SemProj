@@ -2,11 +2,6 @@ import fetchHelper, { errorChecker } from "./fetchHelpers"
 const URL = require("../../package.json").serverURL;
 
 class UserStore {
-    constructor() {
-        this._data = "";
-        this._errorMessage = "";
-        this._places = ""
-    }
 
     setUsersObserver = (handler) => {
         this._usersHandler = handler

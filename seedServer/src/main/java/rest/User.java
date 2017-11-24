@@ -30,28 +30,25 @@ public class User {
         List<JSONUser> jsonUsers = uf.getUsers();
         return GSON.toJson(jsonUsers);
     }
-    
+
     @GET
     @Path("{username}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getUser(@PathParam("username") String username) {
-       JSONUser jsonUser = uf.getUserByUserName(username);
-          System.out.println("in get Rest" + GSON.toJson(jsonUser));
+        JSONUser jsonUser = uf.getUserByUserName(username);
         return GSON.toJson(jsonUser);
     }
-    
+
     //edit user put
     @PUT
     @Path("edit")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String editUser(String content) throws PasswordStorage.CannotPerformOperationException
-    {
+    public String editUser(String content) throws PasswordStorage.CannotPerformOperationException {
         JSONUser jsonUser = uf.editUser(GSON.fromJson(content, entity.User.class));
-        return GSON.toJson(jsonUser); 
+        return GSON.toJson(jsonUser);
     }
-    
-        
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -59,5 +56,5 @@ public class User {
         JSONUser jsonUser = uf.registerUser(GSON.fromJson(content, entity.User.class));
         return GSON.toJson(jsonUser);
     }
-    
+
 }
