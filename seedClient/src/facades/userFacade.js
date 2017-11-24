@@ -38,14 +38,6 @@ class UserStore {
             .then((res) => {
                 return res.json()
             })
-    }
-
-    getUser = (username) => {
-        const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + "api/user/" + username, options)
-            .then((res) => {
-                return res.json()
-            })
             .then((user) => {
                 this._user = user
                 if (this._editHandler) {
@@ -95,6 +87,4 @@ class UserStore {
 }
 let userStore = new UserStore();
 
-//Only for debugging
-//window.userStore = userStore;
 export default userStore;

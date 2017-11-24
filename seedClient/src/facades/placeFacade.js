@@ -101,7 +101,7 @@ class placeFacade {
     sortByZip = (props) => {
         let oldArray = props;
         let sortedArray = oldArray.sort(compareZip);
-        this._sortHhandler(sortedArray);
+        this._sortHandler(sortedArray);
     }
 }
 
