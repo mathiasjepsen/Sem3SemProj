@@ -9,9 +9,10 @@ import TopMenu from "./TopMenu";
 import Signup from "./Signup";
 import AllUsers from './admin/AllUsers'
 import Places from "./Places";
-import CreateLocation from "./CreateLocation"
-import Rating from './Rating'
-import EditUser from './EditUser'
+import CreateLocation from "./CreateLocation";
+import Rating from './Rating';
+import EditUser from './EditUser';
+import Details from './Details';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/createlocation" component={CreateLocation} />
         <Route path="/rate/:id" component={Rating} />
         <Route path="/edit" component={EditUser}/>
+        <Route path="/details/:id" component={Details} />
       </Switch>
     </div>
   )

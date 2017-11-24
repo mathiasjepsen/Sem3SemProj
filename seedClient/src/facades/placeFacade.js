@@ -15,6 +15,10 @@ class placeFacade extends React.Component {
         this._placeHandler = handler
     }
 
+    setDetailsObserver = (handler) => {
+        this._detailsHandler = handler
+    }
+
     setRatingObserver = (handler) => {
         this._ratingHandler = handler
     }
@@ -68,6 +72,9 @@ class placeFacade extends React.Component {
                 this._place = place
                 if (this._ratingHandler) {
                     this._ratingHandler(place)
+                }
+                else if (this._detailsHandler) {
+                    this._detailsHandler(place)
                 }
             })
     }

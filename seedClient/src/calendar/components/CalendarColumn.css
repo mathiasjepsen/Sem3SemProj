@@ -1,0 +1,15 @@
+li.isWeekend {
+	background-color: rgba(244, 244, 244, 0.7);
+}
+
+.fromAnotherMonth .date {
+	color: #c6c6c6 !important;
+}
+
+.currentDayMarker .date {
+  background: #E80000;
+	color: #fff !important;
+  width: 20px;
+  border-radius: 50%;
+  margin: auto;
+}

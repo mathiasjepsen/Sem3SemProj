@@ -19,6 +19,10 @@ class UserStore {
         this._editHandler = handler
     }
 
+    setDetailsObserver = (handler) => {
+        this._detailsHandler = handler
+    }
+
     setEditUserObserver = (handler) => {
         this._editHandler = handler
     }
@@ -55,6 +59,9 @@ class UserStore {
                 this._user = user
                 if (this._editHandler) {
                     this._editHandler(user)
+                }
+                else if (this._detailsHandler) {
+                    this._detailsHandler(user)
                 }
             })
     }
