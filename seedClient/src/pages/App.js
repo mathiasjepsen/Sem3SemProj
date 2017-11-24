@@ -9,6 +9,7 @@ import Places from "./place/Places";
 import CreatePlace from "./place/CreatePlace"
 import Rating from './place/Rating'
 import EditUser from './user/EditUser'
+import MapContainer from './place/MapContainer'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/createplace" component={CreatePlace} />
         <Route path="/rate/:id" component={Rating} />
         <Route path="/edit" component={EditUser}/>
+        <Route path="/map" component={MapContainer}/>
       </Switch>
     </div>
   )
