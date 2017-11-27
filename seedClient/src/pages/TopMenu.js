@@ -26,9 +26,9 @@ class TopMenu extends Component {
                             <a className="navbar-brand" href="/" style={{ pointerEvents: "none" }}>Semester Seed</a>
                         </div>
                         <ul className="nav navbar-nav">
-                            <li><Link to="/places">See Places</Link></li>
+                            <li><Link to="/homes">See Homes</Link></li>
                             {this.state.isAdmin && (<li><Link to="/allUsers">All Users</Link></li>)}
-                            {this.state.isUser && (<li><Link to="/createlocation">Create New Place</Link></li>)}
+                            {this.state.isUser && (<li><Link to="/createhome">Create New Home</Link></li>)}
                             {this.state.isUser && (<li><Link to="/edit">Edit User Information</Link></li>)}
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
@@ -47,7 +47,6 @@ class TopMenu extends Component {
                         </ul>
                     </div>
                 </nav>
-
             </div>
     )
   }

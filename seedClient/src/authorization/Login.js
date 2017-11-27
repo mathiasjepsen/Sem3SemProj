@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import auth from "../authorization/auth";
 
 class Login extends Component {
@@ -14,19 +13,19 @@ class Login extends Component {
         const pass = this.state.user.password;
         auth.login(user, pass, (err, loggedIn) => {
             if (err) {
-                return this.setState({ err: err.errorMessage });
+                return this.setState({ err: err.errorMessage })
             }
-            this.setState({ err: "" });
-            this.props.history.push("/places");
-        });
+            this.setState({ err: "" })
+            this.props.history.push("/homes")
+        })
     }
 
     onChange = (e) => {
-        const propertyName = e.target.id;
-        const value = e.target.value;
-        let user = this.state.user;
-        user[propertyName] = value;
-        this.setState({ user });
+        const propertyName = e.target.id
+        const value = e.target.value
+        let user = this.state.user
+        user[propertyName] = value
+        this.setState({ user })
     }
 
     render() {

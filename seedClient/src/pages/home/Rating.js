@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import placeFacade from '../facades/placeFacade';
-import auth from '../authorization/auth'
+import homeFacade from '../../facades/homeFacade';
+import auth from '../../authorization/auth'
 
 export default class Rating extends React.Component {
     constructor(props) {
         super(props)
         this.user = auth._userName;
-        this.placeId = this.props.match.params.id;
+        this.homeId = this.props.match.params.id;
         this.state = {
-            place: "",
+            home: "",
             user: auth._userName
         }
     }
 
     componentDidMount() {
-        placeFacade.setRatingObserver(this.handleFetchPlace);
-        this.place = placeFacade.fetchPlace(this.placeId);
+        homeFacade.setRatingObserver(this.handleFetchHome)
+        this.home = homeFacade.fetchHome(this.homeId)
     }
 
-    handleFetchPlace = (place) => {
-        this.setState({ place })
-        console.log("state in rating handleFetch", this.state)
+    handleFetchHome = (home) => {
+        this.setState({ home })
     }
 
 
@@ -28,22 +27,22 @@ export default class Rating extends React.Component {
         var value = parseInt(e.target.value);
         var user = this.state.user;
         var newRating = { [user]: value };
-        var obj = Object.assign({}, this.state.place.ratings, newRating);
-        var newPlace = this.state.place;
-        newPlace.ratings = obj;
-        this.setState({ place: newPlace });
+        var obj = Object.assign({}, this.state.home.ratings, newRating);
+        var newHome = this.state.home;
+        newHome.ratings = obj;
+        this.setState({ home: newHome });
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        placeFacade.addRating(this.state.place);
+        homeFacade.addRating(this.state.home);
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
-                    rate the place
+                    rate the home
                 </label>
                 <input type="text" name="rating" onChange={this.handleChange} />
                 <input type="submit" value="Submit" />

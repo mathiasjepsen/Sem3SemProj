@@ -16,8 +16,8 @@ import javax.persistence.OneToOne;
  *
  * @author thomasthimothee
  */
-@Entity(name = "PLACE")
-public class Place implements Serializable {
+@Entity(name = "HOME")
+public class Home implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +29,13 @@ public class Place implements Serializable {
     private String image;
     
     @OneToMany(cascade = CascadeType.PERSIST)
-    private List<PlaceBooking> placeBookings = new ArrayList();
+    private List<HomeBooking> homeBookings = new ArrayList();
 
-    public Place() {
+    public Home() {
         this.ratings = new HashMap();
     }
 
-    public Place(Address address, String description, HashMap<String, Double> ratings, String image) {
+    public Home(Address address, String description, HashMap<String, Double> ratings, String image) {
         this.address = address;
         this.description = description;
         this.ratings = ratings;
@@ -82,12 +82,12 @@ public class Place implements Serializable {
         this.image = image;
     }
 
-    public List<PlaceBooking> getPlaceBookings() {
-        return placeBookings;
+    public List<HomeBooking> getHomeBookings() {
+        return homeBookings;
     }
 
-    public void setPlaceBookings(List<PlaceBooking> placeBookings) {
-        this.placeBookings = placeBookings;
+    public void setHomeBookings(List<HomeBooking> homeBookings) {
+        this.homeBookings = homeBookings;
     }
 
 }

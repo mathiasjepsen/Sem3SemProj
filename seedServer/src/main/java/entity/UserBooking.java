@@ -21,16 +21,16 @@ public class UserBooking implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private int placeId;
+    private int homeId;
     private String date;
 
     public UserBooking() {
     }
 
-    public UserBooking(int placeId, String date) {
-        this.placeId = placeId;
+    public UserBooking(int homeId, String date) {
+        this.homeId = homeId;
         this.date = date;
     }
 

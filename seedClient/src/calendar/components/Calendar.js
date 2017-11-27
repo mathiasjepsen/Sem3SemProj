@@ -13,7 +13,7 @@ export default class Calendar extends React.Component {
   static propTypes = {
     disablePast: PropTypes.bool,
     user: PropTypes.object,
-    place: PropTypes.object,
+    home: PropTypes.object,
     weeksToShow: PropTypes.number,
     isOpen: PropTypes.bool,
     onBook: PropTypes.func,
@@ -35,12 +35,12 @@ export default class Calendar extends React.Component {
       monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
       selectedWeek: null,
       user: props.user,
-      place: props.place,
+      home: props.home,
     };
   }
 
   render() {
-    const { monthNames, selectedMonth, selectedYear, dayNames, selectedWeek, user, place } = this.state;
+    const { monthNames, selectedMonth, selectedYear, dayNames, selectedWeek, user, home } = this.state;
     const { disablePast, weeksToShow, isOpen, onCloseCalendar } = this.props;
 
     // date calculations
@@ -55,7 +55,7 @@ export default class Calendar extends React.Component {
     const nextMonthName = (selectedMonth + 1) === 12 ? monthNames[0] : monthNames[selectedMonth + 1];
 
     const alreadyBoked = [];
-    _.map(place.placeBookings, (booked) => {
+    _.map(home.homeBookings, (booked) => {
       const bookedDate = new Date(booked.date);
       const bookedWeek = this.getWeekNumber(bookedDate);
       if (!_.includes(alreadyBoked, bookedWeek)) {
@@ -205,15 +205,15 @@ export default class Calendar extends React.Component {
       }
     }
 
-    const place = _.cloneDeep(this.state.place);
+    const home = _.cloneDeep(this.state.home);
     const user = _.cloneDeep(this.state.user);
-    place.placeBookings = _.concat(place.placeBookings, range);
+    home.homeBookings = _.concat(home.homeBookings, range);
 
     const userBookings = [];
     _.map(range, (booked) => {
       const helperObj = {
-//        placeId: _.toString(place.id), // converted to string like is received from api
-        placeId: place.id, //actually No need for toString
+//        homeId: _.toString(home.id), // converted to string like is received from api
+        homeId: home.id, //actually No need for toString
         date: booked.date
       }
       userBookings.push(helperObj)
@@ -221,8 +221,8 @@ export default class Calendar extends React.Component {
     user.userBookings = _.concat(user.userBookings, userBookings);
 
 
-    this.setState({ place, user });
-    this.props.onBook(place, user);
+    this.setState({ home, user });
+    this.props.onBook(home, user);
     this.props.onCloseCalendar();
 
   }

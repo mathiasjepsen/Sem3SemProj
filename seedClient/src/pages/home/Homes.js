@@ -1,50 +1,49 @@
 import React, { Component } from 'react';
-import userFacade from '../facades/userFacade';
-import placeFacade from '../facades/placeFacade';
-import Rating from './Rating'
-import auth from '../authorization/auth'
+import userFacade from '../../facades/userFacade';
+import homeFacade from '../../facades/homeFacade';
+import Rating from '../home/Rating'
+import auth from '../../authorization/auth'
 import { NavLink, Route } from 'react-router-dom';
-import Details from './Details';
+import Details from '../home/Details';
 
-export default class Places extends React.Component {
+export default class Homes extends React.Component {
     constructor() {
         super();
         this.state = {
-            //user:,
-            places: [],
+            homes: [],
             userName: auth.userName
         }
     }
 
     componentDidMount() {
-        placeFacade.setPlaceObserver(this.placesUpdater)
-        placeFacade.setSortObserver(this.placesUpdater)
-        placeFacade.fetchPlaces()
-        //fetch user
+        homeFacade.setHomeObserver(this.homesUpdater)
+        homeFacade.setSortObserver(this.homesUpdater)
+        homeFacade.fetchHomes()
     }
 
-    placesUpdater = (places) => {
+    homesUpdater = (homes) => {
         this.setState({
-            places
+            homes
         })
     }
 
     sortByRating = () => {
-        placeFacade.sortByRating(this.state.places)
+        homeFacade.sortByRating(this.state.homes)
     }
 
     sortByCity = () => {
-        placeFacade.sortByCity(this.state.places)
+        homeFacade.sortByCity(this.state.homes)
     }
 
     sortByZip = () => {
-        placeFacade.sortByZip(this.state.places)
+        homeFacade.sortByZip(this.state.homes)
     }
 
     render() {
+        console.log("homes",this.state.homes)
         return (
             <div>
-                <h2>Beautiful places</h2>
+                <h2>Beautiful homes</h2>
                 <table className="table">
                     <thead>
                         <tr>
@@ -61,35 +60,35 @@ export default class Places extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.places.map((place, index) => {
-                            var x = Object.keys(place.ratings);
+                        {this.state.homes.map((home, index) => {
+                            var x = Object.keys(home.ratings);
                             var alreadyRated = x.indexOf(this.state.userName)
                             return (
                                 <tr key={index}>
-                                    <td><img src={`https://mathiasjepsen.dk/backend/ca3/images/${place.image}`} style={{ width: 50, height: 50 }} /></td>
+                                    <td><img src={`https://mathiasjepsen.dk/backend/ca3/images/${home.image}`} style={{ width: 50, height: 50 }} /></td>
                                     <td>
-                                        {place.address.city}
+                                        {home.address.city}
                                     </td>
                                     <td>
-                                        {place.address.zip}
+                                        {home.address.zip}
                                     </td>
                                     <td>
-                                        {place.address.street}
+                                        {home.address.street}
                                     </td>
                                     <td>
-                                        {place.address.location}
+                                        {home.address.location}
                                     </td>
                                     <td>
-                                        {place.description}
+                                        {home.description}
                                     </td>
                                     <td>
-                                        {place.rating}
+                                        {home.rating}
                                     </td>
                                     <td> {this.state.userName !== "" && alreadyRated === -1 &&
-                                        <NavLink className="btn btn-info" to={`/rate/${place.id}`}>rate this place</NavLink>
+                                        <NavLink className="btn btn-info" to={`/rate/${home.id}`}>rate this place</NavLink>
                                     }
                                     </td>
-                                    <td><NavLink className="btn btn-info" to={`details/${place.id}`}>see details</NavLink></td>
+                                    <td><NavLink className="btn btn-info" to={`details/${home.id}`}>see details</NavLink></td>
                                 </tr>
                             )
                         })}

@@ -2,17 +2,14 @@ import fetchHelper, { errorChecker } from "./fetchHelpers"
 import React from 'react';
 const URL = require("../../package.json").serverURL
 
-class placeFacade extends React.Component {
-    constructor() {
-        super()
-    }
+class homeFacade {
 
     setSortObserver = (handler) => {
         this._sortHandler = handler
     }
 
-    setPlaceObserver = (handler) => {
-        this._placeHandler = handler
+    setHomeObserver = (handler) => {
+        this._homeHandler = handler
     }
 
     setDetailsObserver = (handler) => {
@@ -23,19 +20,19 @@ class placeFacade extends React.Component {
         this._ratingHandler = handler
     }
 
-    createPlace = (place, data) => {
+    createHome = (home, data) => {
         const options = fetchHelper.makeOptions("POST", true);
-        fetch(URL + 'api/place', {
+        fetch(URL + 'api/home', {
             method: 'POST',
             headers: options.headers,
             body: JSON.stringify({
-                description: place.description,
-                image: place.image,
+                description: home.description,
+                image: home.image,
                 address: {
-                    city: place.address.city,
-                    zip: place.address.zip,
-                    street: place.address.street,
-                    location: place.address.location
+                    city: home.address.city,
+                    zip: home.address.zip,
+                    street: home.address.street,
+                    location: home.address.location
                 },
                 ratings: {
                     "lovro": 3.0
@@ -43,45 +40,45 @@ class placeFacade extends React.Component {
             })
         }).then((res) => {
             return res.json()
-        }).then((place) => {
+        }).then((home) => {
             this.saveImage(data)
         })
     }
 
-    fetchPlaces = () => {
+    fetchHomes = () => {
         const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + 'api/place', options)
+        fetch(URL + 'api/home', options)
             .then((res) => {
                 return res.json()
             })
-            .then((places) => {
-                this._places = places
-                if (this._placeHandler) {
-                    this._placeHandler(places)
+            .then((homes) => {
+                this._homes = homes
+                if (this._homeHandler) {
+                    this._homeHandler(homes)
                 }
             })
     }
 
-    fetchPlace = (id) => {
+    fetchHome = (id) => {
         const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + 'api/place/' + id, options)
+        fetch(URL + 'api/home/' + id, options)
             .then((res) => {
                 return res.json()
             })
-            .then((place) => {
-                this._place = place
+            .then((home) => {
+                this._home = home
                 if (this._ratingHandler) {
-                    this._ratingHandler(place)
+                    this._ratingHandler(home)
                 }
                 if (this._detailsHandler) {
-                    this._detailsHandler(place)
+                    this._detailsHandler(home)
                 }
             })
     }
 
-    addRating = (place) => {
-        const options = fetchHelper.makeOptions("PUT", true, place);
-        fetch(URL + 'api/place/rate', {
+    addRating = (home) => {
+        const options = fetchHelper.makeOptions("PUT", true, home);
+        fetch(URL + 'api/home/rate', {
             method: 'PUT',
             headers: options.headers,
             body: options.body
@@ -140,7 +137,7 @@ function compareZip(a, b) {
 }
 
 
-let pf = new placeFacade();
+let hf = new homeFacade();
 
-export default pf;
+export default hf;
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import userFacade from '../facades/userFacade'
-import auth from "../authorization/auth";
+import userFacade from '../../facades/userFacade'
+import auth from "../../authorization/auth";
 
 class EditUser extends Component {
     constructor() {
@@ -33,7 +33,7 @@ class EditUser extends Component {
         }
 
         userFacade.editUser(user)
-        this.props.history.push("/places");
+        this.props.history.push("/homes");
         e.preventDefault()
     }
 

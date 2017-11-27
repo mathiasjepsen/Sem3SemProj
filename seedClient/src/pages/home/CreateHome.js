@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import placeFacade from '../facades/placeFacade'
-import auth from "../authorization/auth";
+import homeFacade from '../../facades/homeFacade'
+import auth from "../../authorization/auth";
 
-class CreateLocation extends Component {
+class CreateHome extends Component {
     constructor() {
         super();
         this.state = { city: "", zip: "", location: "", street: "", description: "", image: "" }
@@ -18,7 +18,7 @@ class CreateLocation extends Component {
         data.append('file', input.files[0]);        
         data.append("fileName", imageName)
 
-        const place = {
+        const home = {
             address: {
                 city: this.state.city,
                 zip: this.state.zip,
@@ -29,7 +29,7 @@ class CreateLocation extends Component {
             image: imageName
         }
 
-        placeFacade.createPlace(place, data)
+        homeFacade.createHome(home, data)
     }
 
     onChange = (e) => {
@@ -43,7 +43,7 @@ class CreateLocation extends Component {
             <div>
                 <form className="form-horizontal" onSubmit={this.handleSubmit} >
                     <div className="form-group">
-                            <h2 className="form-signin-heading col-sm-offset-4">Create New Place</h2>
+                            <h2 className="form-signin-heading col-sm-offset-4">Create New Home</h2>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-8 col-sm-offset-2">
@@ -86,4 +86,4 @@ class CreateLocation extends Component {
     }
 }
 
-export default CreateLocation;
+export default CreateHome

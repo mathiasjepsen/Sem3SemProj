@@ -1,8 +1,8 @@
 package deploy;
 
 import entity.Address;
-import entity.Place;
-import entity.PlaceBooking;
+import entity.HomeBooking;
+import entity.Home;
 import entity.Role;
 import entity.User;
 import entity.UserBooking;
@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -52,6 +51,7 @@ public class DeploymentConfiguration implements ServletContextListener {
     }
 //    ServletContext context = sce.getServletContext();
 //
+//
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
@@ -79,24 +79,24 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            rating.put(user2.getUserName(), 3.0);
 //            rating.put(user3.getUserName(), 4.0);
 //            String image = "pocketFitIcon.png";
-//            Place place = new Place(address, "A stroll down memory lane", rating, image);
+//            Home home = new Home(address, "A stroll down memory lane", rating, image);
 //            HashMap<String, Double> rating2 = new HashMap();
 //            rating2.put(user1.getUserName(), 5.0);
 //            rating2.put(user2.getUserName(), 4.0);
 //            rating2.put(user3.getUserName(), 4.0);
-//            Place place2 = new Place(address2, "A breath of fresh air", rating2, image);
+//            Home home2 = new Home(address2, "A breath of fresh air", rating2, image);
 //            HashMap<String, Double> rating3 = new HashMap();
 //            rating3.put(user1.getUserName(), 1.0);
 //            rating3.put(user2.getUserName(), 2.0);
 //            rating3.put(user3.getUserName(), 3.0);
-//            Place place3 = new Place(address3, "Once in a lifetime experience", rating3, image);
-//            UserBooking ub1 = new UserBooking(1,"2017-11-20");
-//            UserBooking ub2 = new UserBooking(1,"2017-11-21");
-//            UserBooking ub3 = new UserBooking(1,"2017-11-22");
-//            UserBooking ub4 = new UserBooking(1,"2017-11-23");
-//            UserBooking ub5 = new UserBooking(1,"2017-11-24");
-//            UserBooking ub6 = new UserBooking(1,"2017-11-25");
-//            UserBooking ub7 = new UserBooking(1,"2017-11-26");
+//            Home home3 = new Home(address3, "Once in a lifetime experience", rating3, image);
+//            UserBooking ub1 = new UserBooking(1,"2017-11-27");
+//            UserBooking ub2 = new UserBooking(1,"2017-11-28");
+//            UserBooking ub3 = new UserBooking(1,"2017-11-29");
+//            UserBooking ub4 = new UserBooking(1,"2017-11-30");
+//            UserBooking ub5 = new UserBooking(1,"2017-12-1");
+//            UserBooking ub6 = new UserBooking(1,"2017-12-2");
+//            UserBooking ub7 = new UserBooking(1,"2017-12-3");
 //            user1.getBookings().add(ub1);
 //            user1.getBookings().add(ub2);
 //            user1.getBookings().add(ub3);
@@ -104,26 +104,26 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            user1.getBookings().add(ub5);
 //            user1.getBookings().add(ub6);
 //            user1.getBookings().add(ub7);
-//            PlaceBooking pb1 = new PlaceBooking("mathias","2017-11-20");
-//            PlaceBooking pb2 = new PlaceBooking("mathias","2017-11-21");
-//            PlaceBooking pb3 = new PlaceBooking("mathias","2017-11-22");
-//            PlaceBooking pb4 = new PlaceBooking("mathias","2017-11-23");
-//            PlaceBooking pb5 = new PlaceBooking("mathias","2017-11-24");
-//            PlaceBooking pb6 = new PlaceBooking("mathias","2017-11-25");
-//            PlaceBooking pb7 = new PlaceBooking("mathias","2017-11-26");
-//            place.getPlaceBookings().add(pb1);
-//            place.getPlaceBookings().add(pb2);
-//            place.getPlaceBookings().add(pb3);
-//            place.getPlaceBookings().add(pb4);
-//            place.getPlaceBookings().add(pb5);
-//            place.getPlaceBookings().add(pb6);
-//            place.getPlaceBookings().add(pb7);
+//            HomeBooking pb1 = new HomeBooking("mathias","2017-11-27");
+//            HomeBooking pb2 = new HomeBooking("mathias","2017-11-28");
+//            HomeBooking pb3 = new HomeBooking("mathias","2017-11-29");
+//            HomeBooking pb4 = new HomeBooking("mathias","2017-11-30");
+//            HomeBooking pb5 = new HomeBooking("mathias","2017-12-1");
+//            HomeBooking pb6 = new HomeBooking("mathias","2017-12-2");
+//            HomeBooking pb7 = new HomeBooking("mathias","2017-12-3");
+//            home.getHomeBookings().add(pb1);
+//            home.getHomeBookings().add(pb2);
+//            home.getHomeBookings().add(pb3);
+//            home.getHomeBookings().add(pb4);
+//            home.getHomeBookings().add(pb5);
+//            home.getHomeBookings().add(pb6);
+//            home.getHomeBookings().add(pb7);
 //            em.persist(address);
 //            em.persist(address2);
 //            em.persist(address3);
-//            em.persist(place);
-//            em.persist(place2);
-//            em.persist(place3);
+//            em.persist(home);
+//            em.persist(home2);
+//            em.persist(home3);
 //            em.persist(user1);
 //            em.persist(user2);
 //            em.persist(user3);
@@ -139,15 +139,14 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        } finally {
 //            em.close();
 //        }
-
   }
+
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-}
+  
   
 
+}

@@ -2,11 +2,6 @@ import fetchHelper, { errorChecker } from "./fetchHelpers"
 const URL = require("../../package.json").serverURL;
 
 class UserStore {
-    constructor() {
-        this._data = "";
-        this._errorMessage = "";
-        this._places = ""
-    }
 
     setUsersObserver = (handler) => {
         this._usersHandler = handler
@@ -35,14 +30,6 @@ class UserStore {
                 if (this._usersHandler) {
                     this._usersHandler(users)
                 }
-            })
-    }
-
-    getUser = (username) => {
-        const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + "api/user/" + username, options)
-            .then((res) => {
-                return res.json()
             })
     }
 
@@ -104,6 +91,4 @@ class UserStore {
 }
 let userStore = new UserStore();
 
-//Only for debugging
-//window.userStore = userStore;
 export default userStore;

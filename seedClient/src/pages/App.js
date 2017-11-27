@@ -1,18 +1,15 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
-import Login from "./Login";
-import Logout from "./Logout";
-import About from "./About";
-import UserPage from "./UserPage";
-import AdminPage from "./AdminPage";
+import Login from "../authorization/Login";
+import Logout from "../authorization/Logout";
 import TopMenu from "./TopMenu";
-import Signup from "./Signup";
+import Signup from "../authorization/Signup";
 import AllUsers from './admin/AllUsers'
-import Places from "./Places";
-import CreateLocation from "./CreateLocation";
-import Rating from './Rating';
-import EditUser from './EditUser';
-import Details from './Details';
+import Homes from "./home/Homes";
+import CreateHome from "./home/CreateHome";
+import Rating from './home/Rating';
+import EditUser from './user/EditUser';
+import Details from './home/Details';
 
 function App() {
   return (
@@ -21,13 +18,10 @@ function App() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
-        <Route path="/about" component={About} />
-        <Route path="/user" component={UserPage} />
-        <Route path="/admin" component={AdminPage} />
         <Route path="/signup" component={Signup} />
         <Route path="/allUsers" component={AllUsers} />
-        <Route path="/places" component={Places} />
-        <Route path="/createlocation" component={CreateLocation} />
+        <Route path="/homes" component={Homes} />
+        <Route path="/createhome" component={CreateHome} />
         <Route path="/rate/:id" component={Rating} />
         <Route path="/edit" component={EditUser}/>
         <Route path="/details/:id" component={Details} />

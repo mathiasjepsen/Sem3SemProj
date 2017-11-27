@@ -17,19 +17,19 @@ import javax.persistence.Id;
  * @author thomasthimothee
  */
 @Entity
-public class PlaceBooking implements Serializable {
+public class HomeBooking implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String userName;
     private String date ;
 
-    public PlaceBooking() {
+    public HomeBooking() {
     }
 
-    public PlaceBooking(String userName, String date) {
+    public HomeBooking(String userName, String date) {
         this.userName= userName;
         this.date = date;
     }
@@ -70,10 +70,10 @@ public class PlaceBooking implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlaceBooking)) {
+        if (!(object instanceof HomeBooking)) {
             return false;
         }
-        PlaceBooking other = (PlaceBooking) object;
+        HomeBooking other = (HomeBooking) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -82,7 +82,7 @@ public class PlaceBooking implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.PlaceBooking[ id=" + id + " ]";
+        return "entity.HomeBooking[ id=" + id + " ]";
     }
     
 }

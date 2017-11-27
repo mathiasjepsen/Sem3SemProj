@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
-import CalendarContainer from '../calendar/containers/CalendarContainer';
-import CalendarLayout from '../calendar/layouts/CalendarLayout';
-import auth from '../authorization/auth';
-import userFacade from '../facades/userFacade';
-import placeFacade from '../facades/placeFacade';
+import CalendarContainer from '../../calendar/containers/CalendarContainer';
+import CalendarLayout from '../../calendar/layouts/CalendarLayout';
+import auth from '../../authorization/auth';
+import userFacade from '../../facades/userFacade';
+import homeFacade from '../../facades/homeFacade';
 
 //import '../../calendar/App.css';
 
@@ -13,18 +13,18 @@ export default class Details extends React.Component {
         super();
         this.state = {
             //user:,
-            place: {},
+            home: {},
             user: {},
             userName: auth.userName,
-            placeId: props.match.params.id,
+            homeId: props.match.params.id,
             isLoggedIn: false
         }
 
     }
 
     componentDidMount = ()=> {
-        placeFacade.setDetailsObserver(this.placeUpdater);
-        placeFacade.fetchPlace(this.state.placeId);
+        homeFacade.setDetailsObserver(this.homeUpdater);
+        homeFacade.fetchHomes(this.state.homeId);
         if (this.state.userName !== "") {
             this.setState({ isLoggedIn: true })
             userFacade.setDetailsObserver(this.userUpdater);
@@ -32,9 +32,9 @@ export default class Details extends React.Component {
         }
     }
 
-    placeUpdater = (place) => {
+    homeUpdater = (home) => {
         this.setState({
-            place
+            home
         })
     }
 
@@ -56,7 +56,7 @@ export default class Details extends React.Component {
                             <CalendarContainer
                                 {...props}
                                 user={this.state.user}
-                                home={this.state.place}
+                                home={this.state.home}
                                 isLoggedIn={this.state.isLoggedIn} />
                         </CalendarLayout>
                     )
