@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -23,16 +24,29 @@ public class Home implements Serializable {
     private String description;
     private HashMap<String, Double> ratings;
     private String image;
+    @ManyToOne
+    private User user;
 
     public Home() {
         this.ratings = new HashMap();
     }
 
-    public Home(Address address, String description, HashMap<String, Double> ratings, String image) {
+    public Home(Address address, String description, HashMap<String, Double> ratings, String image, User user) {
         this.address = address;
         this.description = description;
         this.ratings = ratings;
         this.image = image;
+        this.user = user;
+    }
+
+    public User getUser()
+    {
+        return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user = user;
     }
 
     public Integer getId() {

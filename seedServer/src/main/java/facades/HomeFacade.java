@@ -55,6 +55,21 @@ public class HomeFacade implements IHomeFacade {
             em.close();
         }
     }
+    
+     @Override
+    public JSONHome deleteHome(Integer id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Home home = em.find(Home.class, id);
+            em.remove(home);
+            em.getTransaction().commit();
+            return new JSONHome(home);
+        } finally {
+            em.close();
+        }
+    }
+    
 
     @Override
     public JSONHome createHome(Home home) {

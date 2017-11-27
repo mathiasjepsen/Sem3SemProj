@@ -5,9 +5,10 @@ import java.util.List;
 import security.PasswordStorage;
 
 public interface IUser {
-
+    List <String> getHomesAsStrings();
+    
     List<String> getRolesAsStrings();
-
+    
     void addRole(Role role);
 
     void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException;
