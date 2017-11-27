@@ -10,6 +10,7 @@ import CreateHome from "./home/CreateHome";
 import Rating from './home/Rating';
 import EditUser from './user/EditUser';
 import Details from './home/Details';
+import Map from './home/Map';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/rate/:id" component={Rating} />
         <Route path="/edit" component={EditUser}/>
         <Route path="/details/:id" component={Details} />
+        <Route path="/map" component={Map} />
       </Switch>
     </div>
   )
