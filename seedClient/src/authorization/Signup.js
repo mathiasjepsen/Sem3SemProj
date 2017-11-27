@@ -49,9 +49,9 @@ class Signup extends Component {
                     <label htmlFor="inputLasttName" className="sr-only">Last Name</label>
                     <input type="text" value={this.state.user.lastname} onChange={this.onChange} className="form-control" id="lastname" placeholder="Last Name" required autoFocus />
                     <label htmlFor="inputEmail" className="sr-only">Email</label>
-                    <input type="text" value={this.state.user.email} onChange={this.onChange} className="form-control" id="email" placeholder="Email" required autoFocus />
+                    <input type="email" value={this.state.user.email} onChange={this.onChange} className="form-control" id="email" placeholder="Email" required autoFocus />
                     <label htmlFor="inputPhone" className="sr-only">Phone number</label>
-                    <input type="text" value={this.state.user.phone} onChange={this.onChange} className="form-control" id="phone" placeholder="Phone" required autoFocus />
+                    <input type="number" value={this.state.user.phone} onChange={this.onChange} className="form-control" id="phone" placeholder="Phone" required autoFocus />
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
                     <input type="password" value={this.state.user.password} onChange={this.onChange} className="form-control" id="password" placeholder="Password" required />
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
