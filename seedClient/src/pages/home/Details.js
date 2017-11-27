@@ -24,7 +24,7 @@ export default class Details extends React.Component {
 
     componentDidMount = ()=> {
         homeFacade.setDetailsObserver(this.homeUpdater);
-        homeFacade.fetchHomes(this.state.homeId);
+        homeFacade.fetchHome(this.state.homeId);
         if (this.state.userName !== "") {
             this.setState({ isLoggedIn: true })
             userFacade.setDetailsObserver(this.userUpdater);
