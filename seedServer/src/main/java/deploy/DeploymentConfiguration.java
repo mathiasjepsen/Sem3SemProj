@@ -2,8 +2,10 @@ package deploy;
 
 import entity.Address;
 import entity.Place;
+import entity.PlaceBooking;
 import entity.Role;
 import entity.User;
+import entity.UserBooking;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -49,8 +51,7 @@ public class DeploymentConfiguration implements ServletContextListener {
       Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
     }
 //    ServletContext context = sce.getServletContext();
-// 
-
+//
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
@@ -89,6 +90,34 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            rating3.put(user2.getUserName(), 2.0);
 //            rating3.put(user3.getUserName(), 3.0);
 //            Place place3 = new Place(address3, "Once in a lifetime experience", rating3, image);
+//            UserBooking ub1 = new UserBooking(1,"2017-11-20");
+//            UserBooking ub2 = new UserBooking(1,"2017-11-21");
+//            UserBooking ub3 = new UserBooking(1,"2017-11-22");
+//            UserBooking ub4 = new UserBooking(1,"2017-11-23");
+//            UserBooking ub5 = new UserBooking(1,"2017-11-24");
+//            UserBooking ub6 = new UserBooking(1,"2017-11-25");
+//            UserBooking ub7 = new UserBooking(1,"2017-11-26");
+//            user1.getBookings().add(ub1);
+//            user1.getBookings().add(ub2);
+//            user1.getBookings().add(ub3);
+//            user1.getBookings().add(ub4);
+//            user1.getBookings().add(ub5);
+//            user1.getBookings().add(ub6);
+//            user1.getBookings().add(ub7);
+//            PlaceBooking pb1 = new PlaceBooking("mathias","2017-11-20");
+//            PlaceBooking pb2 = new PlaceBooking("mathias","2017-11-21");
+//            PlaceBooking pb3 = new PlaceBooking("mathias","2017-11-22");
+//            PlaceBooking pb4 = new PlaceBooking("mathias","2017-11-23");
+//            PlaceBooking pb5 = new PlaceBooking("mathias","2017-11-24");
+//            PlaceBooking pb6 = new PlaceBooking("mathias","2017-11-25");
+//            PlaceBooking pb7 = new PlaceBooking("mathias","2017-11-26");
+//            place.getPlaceBookings().add(pb1);
+//            place.getPlaceBookings().add(pb2);
+//            place.getPlaceBookings().add(pb3);
+//            place.getPlaceBookings().add(pb4);
+//            place.getPlaceBookings().add(pb5);
+//            place.getPlaceBookings().add(pb6);
+//            place.getPlaceBookings().add(pb7);
 //            em.persist(address);
 //            em.persist(address2);
 //            em.persist(address3);
@@ -111,16 +140,14 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            em.close();
 //        }
 
-//  }
-//
+  }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }
   
-  @Override
-  public void contextDestroyed(ServletContextEvent sce) {
-
-  }
-
-   
-}
 

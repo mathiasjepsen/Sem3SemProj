@@ -1,6 +1,7 @@
 package rest.JSON;
 
 import entity.Role;
+import entity.UserBooking;
 import java.util.ArrayList;
 import java.util.List;
 import security.interfaces.IUser;
@@ -18,6 +19,7 @@ public class JSONUser {
     private String phone;
     private String email;
     private List<String> roles;
+    private List<UserBooking> userBookings;
 
     public JSONUser(IUser user) {
         this.username = user.getUserName();
@@ -27,6 +29,7 @@ public class JSONUser {
         this.phone = user.getPhone();
         this.email = user.getEmail();
         this.roles = user.getRolesAsStrings();
+        this.userBookings = user.getBookings();
     }
 
     public String getUsername() {
@@ -69,4 +72,10 @@ public class JSONUser {
         
         return rolesAsStrings;
     }
+
+    public List<UserBooking> getUserBookings() {
+        return userBookings;
+    }
+    
+    
 }

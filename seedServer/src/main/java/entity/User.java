@@ -3,10 +3,12 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import security.interfaces.IUser;
 import security.PasswordStorage;
 
@@ -24,6 +26,8 @@ public class User implements IUser, Serializable {
     private String email;
     @ManyToMany
     List<Role> roles;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    List<UserBooking> bookings = new ArrayList();
 
     public User() {
     }
@@ -52,6 +56,14 @@ public class User implements IUser, Serializable {
 
     public List<Role> getRoles() {
         return roles;
+    }
+
+    public List<UserBooking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<UserBooking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override

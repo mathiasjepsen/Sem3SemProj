@@ -55,7 +55,7 @@ export default class Calendar extends React.Component {
     const nextMonthName = (selectedMonth + 1) === 12 ? monthNames[0] : monthNames[selectedMonth + 1];
 
     const alreadyBoked = [];
-    _.map(place.bookings, (booked) => {
+    _.map(place.placeBookings, (booked) => {
       const bookedDate = new Date(booked.date);
       const bookedWeek = this.getWeekNumber(bookedDate);
       if (!_.includes(alreadyBoked, bookedWeek)) {
@@ -183,14 +183,14 @@ export default class Calendar extends React.Component {
       // range is in 2 diff months
       for (var day = bookedRange.from.day; day <= daysInMonth; day++) {
         const bookingPart = {
-          'username': this.props.user.userName,
+          'username': this.props.user.username,
           'date': bookedRange.from.year + '-' + bookedRange.from.month + '-' + day,
         }
         range.push(bookingPart);
       }
       for (var nextMonthDay = 1; nextMonthDay <= bookedRange.to.day; nextMonthDay++) {
         const bookingPart = {
-          'username': this.props.user.userName,
+          'username': this.props.user.username,
           'date': bookedRange.to.year + '-' + bookedRange.to.month + '-' + nextMonthDay,
         }
         range.push(bookingPart);
@@ -198,7 +198,7 @@ export default class Calendar extends React.Component {
     } else {
       for (var regularMonthDay = bookedRange.from.day; regularMonthDay <= bookedRange.to.day; regularMonthDay++) {
         const bookingPart = {
-          'username': this.props.user.userName,
+          'username': this.props.user.username,
           'date': bookedRange.from.year + '-' + bookedRange.from.month + '-' + regularMonthDay,
         }
         range.push(bookingPart);
@@ -207,17 +207,18 @@ export default class Calendar extends React.Component {
 
     const place = _.cloneDeep(this.state.place);
     const user = _.cloneDeep(this.state.user);
-    place.bookings = _.concat(place.bookings, range);
+    place.placeBookings = _.concat(place.placeBookings, range);
 
     const userBookings = [];
     _.map(range, (booked) => {
       const helperObj = {
-        placeId: _.toString(place.id), // converted to string like is received from api
+//        placeId: _.toString(place.id), // converted to string like is received from api
+        placeId: place.id, //actually No need for toString
         date: booked.date
       }
       userBookings.push(helperObj)
     })
-    user.bookings = _.concat(user.bookings, userBookings);
+    user.userBookings = _.concat(user.userBookings, userBookings);
 
 
     this.setState({ place, user });

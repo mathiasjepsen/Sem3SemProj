@@ -7,7 +7,9 @@ package rest.JSON;
 
 import entity.Address;
 import entity.Place;
+import entity.PlaceBooking;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,7 @@ public class JSONPlace {
     private String image;
     private HashMap<String, Double> ratings;
     private int rating;
+    private List<PlaceBooking> placeBookings;
 
     public JSONPlace(Place place) {
         this.id = place.getId();
@@ -30,6 +33,7 @@ public class JSONPlace {
         this.ratings = place.getRatings();
         this.rating = calculateRating();
         this.id = place.getId();
+        this.placeBookings = place.getPlaceBookings();    
     }
 
     private int calculateRating() {
@@ -65,5 +69,11 @@ public class JSONPlace {
     public int getRating() {
         return rating;
     }
+
+    public List<PlaceBooking> getPlaceBookings() {
+        return placeBookings;
+    }
+    
+    
 
 }

@@ -73,7 +73,7 @@ class placeFacade extends React.Component {
                 if (this._ratingHandler) {
                     this._ratingHandler(place)
                 }
-                else if (this._detailsHandler) {
+                if (this._detailsHandler) {
                     this._detailsHandler(place)
                 }
             })
@@ -111,7 +111,7 @@ class placeFacade extends React.Component {
     sortByZip = (props) => {
         let oldArray = props;
         let sortedArray = oldArray.sort(compareZip);
-        this._sortHhandler(sortedArray);
+        this._sortHandler(sortedArray);
     }
 }
 

@@ -7,7 +7,6 @@ export default class Rating extends React.Component {
         super(props)
         this.user = auth._userName;
         this.placeId = this.props.match.params.id;
-        console.log("props in rating", this.props)
         this.state = {
             place: "",
             user: auth._userName
@@ -15,12 +14,13 @@ export default class Rating extends React.Component {
     }
 
     componentDidMount() {
-        placeFacade.setRatingObserver(this.handleFetchPlace)
-        this.place = placeFacade.fetchPlace(this.placeId)
+        placeFacade.setRatingObserver(this.handleFetchPlace);
+        this.place = placeFacade.fetchPlace(this.placeId);
     }
 
     handleFetchPlace = (place) => {
         this.setState({ place })
+        console.log("state in rating handleFetch", this.state)
     }
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom'
 import CalendarContainer from '../calendar/containers/CalendarContainer';
 import CalendarLayout from '../calendar/layouts/CalendarLayout';
 import auth from '../authorization/auth';
@@ -21,39 +22,47 @@ export default class Details extends React.Component {
 
     }
 
-    componentDidMount() {
+    componentDidMount = ()=> {
         placeFacade.setDetailsObserver(this.placeUpdater);
         placeFacade.fetchPlace(this.state.placeId);
-        console.log("state after fetchPlace", this.state);
-
-        if(this.userName !== ""){
-            this.setState({isLoggedIn : true})
-        userFacade.setDetailsObserver(this.userUpdater);
-        userFacade.getUser(this.state.userName);
-        console.log("state after getUser", this.state);
+        if (this.state.userName !== "") {
+            this.setState({ isLoggedIn: true })
+            userFacade.setDetailsObserver(this.userUpdater);
+            userFacade.getUser(this.state.userName);
         }
-        console.log("state at the end of ComponentDidMount", this.state)
     }
 
-    placeUpdater(place){
+    placeUpdater = (place) => {
         this.setState({
             place
         })
     }
 
-    userUpdater(user){
+    userUpdater = (user) => {
         this.setState({
-            user
+            user: user
         })
     }
 
     render() {
         return (
             <div>
-                <CalendarLayout>
-                    <CalendarContainer />
-                </CalendarLayout>
+                <div>
+                    <Link className="btn btn-success" to={`${this.props.match.url}/book`}>Book Home</Link>
+                </div>
+                <Route exact path={`${this.props.match.url}/book`} render={(props) => {   
+                    return (
+                        <CalendarLayout>
+                            <CalendarContainer
+                                {...props}
+                                user={this.state.user}
+                                home={this.state.place}
+                                isLoggedIn={this.state.isLoggedIn} />
+                        </CalendarLayout>
+                    )
+                }} />
             </div>
         )
     }
 }
+

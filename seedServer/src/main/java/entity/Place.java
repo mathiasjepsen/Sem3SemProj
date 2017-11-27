@@ -1,12 +1,15 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -24,6 +27,9 @@ public class Place implements Serializable {
     private String description;
     private HashMap<String, Double> ratings;
     private String image;
+    
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<PlaceBooking> placeBookings = new ArrayList();
 
     public Place() {
         this.ratings = new HashMap();
@@ -74,6 +80,14 @@ public class Place implements Serializable {
 
     public void setImages(String image) {
         this.image = image;
+    }
+
+    public List<PlaceBooking> getPlaceBookings() {
+        return placeBookings;
+    }
+
+    public void setPlaceBookings(List<PlaceBooking> placeBookings) {
+        this.placeBookings = placeBookings;
     }
 
 }

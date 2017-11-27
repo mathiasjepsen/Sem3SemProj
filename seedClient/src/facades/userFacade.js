@@ -15,16 +15,13 @@ class UserStore {
     setSignupObserver = (handler) => {
         this._signupHandler = handler
     }
+    
     setEditObserver = (handler) => {
         this._editHandler = handler
     }
 
     setDetailsObserver = (handler) => {
         this._detailsHandler = handler
-    }
-
-    setEditUserObserver = (handler) => {
-        this._editHandler = handler
     }
 
     getAllUsers = () => {
@@ -60,7 +57,7 @@ class UserStore {
                 if (this._editHandler) {
                     this._editHandler(user)
                 }
-                else if (this._detailsHandler) {
+                if (this._detailsHandler) {
                     this._detailsHandler(user)
                 }
             })
