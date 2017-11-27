@@ -11,37 +11,37 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import rest.JSON.JSONPlace;
-import security.interfaces.IPlaceFacade;
+import rest.JSON.JSONHome;
 import security.PasswordStorage;
-import security.factories.PlaceFacadeFactory;
+import security.factories.HomeFacadeFactory;
+import security.interfaces.IHomeFacade;
 
-@Path("place")
-public class Place {
+@Path("home")
+public class Home {
 
-    IPlaceFacade pf = PlaceFacadeFactory.getInstance();
+    IHomeFacade hf = HomeFacadeFactory.getInstance();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getPlaces() {
-        List<JSONPlace> jsonPlaces = pf.getAllPlaces();
+    public String getHomes() {
+        List<JSONHome> jsonPlaces = hf.getAllHomes();
         return GSON.toJson(jsonPlaces);
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String createPlace(String content) {
-        JSONPlace jsonPlace = pf.createPlace(GSON.fromJson(content, entity.Place.class));
+    public String createHome(String content) {
+        JSONHome jsonPlace = hf.createHome(GSON.fromJson(content, entity.Home.class));
         return GSON.toJson(jsonPlace);
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getPlace(@PathParam("id") Integer id) {
-        JSONPlace jsonPlace = pf.getPlace(id);
+    public String getHome(@PathParam("id") Integer id) {
+        JSONHome jsonPlace = hf.getHome(id);
         return GSON.toJson(jsonPlace);
     }
     
@@ -50,7 +50,7 @@ public class Place {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String addRate(String content) throws PasswordStorage.CannotPerformOperationException {
-        JSONPlace place = pf.addRate(GSON.fromJson(content, entity.Place.class));
+        JSONHome place = hf.addRate(GSON.fromJson(content, entity.Home.class));
         return GSON.toJson(place);
     }
 

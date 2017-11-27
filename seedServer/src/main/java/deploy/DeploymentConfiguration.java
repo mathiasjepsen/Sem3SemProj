@@ -1,7 +1,7 @@
 package deploy;
 
 import entity.Address;
-import entity.Place;
+import entity.Home;
 import entity.Role;
 import entity.User;
 import java.io.IOException;
@@ -49,8 +49,8 @@ public class DeploymentConfiguration implements ServletContextListener {
       Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
     }
 //    ServletContext context = sce.getServletContext();
-// 
-
+//
+//
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
@@ -78,17 +78,17 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            rating.put(user2.getUserName(), 3.0);
 //            rating.put(user3.getUserName(), 4.0);
 //            String image = "pocketFitIcon.png";
-//            Place place = new Place(address, "A stroll down memory lane", rating, image);
+//            Home place = new Home(address, "A stroll down memory lane", rating, image);
 //            HashMap<String, Double> rating2 = new HashMap();
 //            rating2.put(user1.getUserName(), 5.0);
 //            rating2.put(user2.getUserName(), 4.0);
 //            rating2.put(user3.getUserName(), 4.0);
-//            Place place2 = new Place(address2, "A breath of fresh air", rating2, image);
+//            Home place2 = new Home(address2, "A breath of fresh air", rating2, image);
 //            HashMap<String, Double> rating3 = new HashMap();
 //            rating3.put(user1.getUserName(), 1.0);
 //            rating3.put(user2.getUserName(), 2.0);
 //            rating3.put(user3.getUserName(), 3.0);
-//            Place place3 = new Place(address3, "Once in a lifetime experience", rating3, image);
+//            Home place3 = new Home(address3, "Once in a lifetime experience", rating3, image);
 //            em.persist(address);
 //            em.persist(address2);
 //            em.persist(address3);
@@ -110,11 +110,10 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        } finally {
 //            em.close();
 //        }
+  }
 
-//  }
-//
 
-}
+
   
   @Override
   public void contextDestroyed(ServletContextEvent sce) {

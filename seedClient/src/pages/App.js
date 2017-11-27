@@ -5,9 +5,9 @@ import Logout from "../authorization/Logout";
 import TopMenu from "./TopMenu";
 import Signup from "../authorization/Signup";
 import AllUsers from './admin/AllUsers'
-import Places from "./place/Places";
-import CreatePlace from "./place/CreatePlace"
-import Rating from './place/Rating'
+import Homes from "./home/Homes";
+import CreateHome from "./home/CreateHome"
+import Rating from './home/Rating'
 import EditUser from './user/EditUser'
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
         <Route path="/logout" component={Logout} />
         <Route path="/signup" component={Signup} />
         <Route path="/allUsers" component={AllUsers} />
-        <Route path="/places" component={Places} />
-        <Route path="/createplace" component={CreatePlace} />
+        <Route path="/homes" component={Homes} />
+        <Route path="/createhome" component={CreateHome} />
         <Route path="/rate/:id" component={Rating} />
         <Route path="/edit" component={EditUser}/>
       </Switch>

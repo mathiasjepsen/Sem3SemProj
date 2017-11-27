@@ -33,7 +33,7 @@ class EditUser extends Component {
         }
 
         userFacade.editUser(user)
-        this.props.history.push("/places");
+        this.props.history.push("/homes");
         e.preventDefault()
     }
 

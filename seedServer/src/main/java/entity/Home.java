@@ -12,8 +12,8 @@ import javax.persistence.OneToOne;
  *
  * @author thomasthimothee
  */
-@Entity(name = "PLACE")
-public class Place implements Serializable {
+@Entity(name = "HOME")
+public class Home implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public class Place implements Serializable {
     private HashMap<String, Double> ratings;
     private String image;
 
-    public Place() {
+    public Home() {
         this.ratings = new HashMap();
     }
 
-    public Place(Address address, String description, HashMap<String, Double> ratings, String image) {
+    public Home(Address address, String description, HashMap<String, Double> ratings, String image) {
         this.address = address;
         this.description = description;
         this.ratings = ratings;

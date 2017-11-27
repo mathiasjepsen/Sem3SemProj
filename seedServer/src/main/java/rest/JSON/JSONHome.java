@@ -6,14 +6,14 @@
 package rest.JSON;
 
 import entity.Address;
-import entity.Place;
+import entity.Home;
 import java.util.HashMap;
 
 /**
  *
  * @author Lovro
  */
-public class JSONPlace {
+public class JSONHome {
 
     private int id;
     private Address address;
@@ -22,7 +22,7 @@ public class JSONPlace {
     private HashMap<String, Double> ratings;
     private int rating;
 
-    public JSONPlace(Place place) {
+    public JSONHome(Home place) {
         this.id = place.getId();
         this.address = place.getAddress();
         this.description = place.getDescription();
