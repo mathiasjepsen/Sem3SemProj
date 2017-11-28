@@ -40,6 +40,7 @@ export default class Homes extends React.Component {
     }
 
     render() {
+        console.log("Homes", this.state.homes)
         return (
             <div>
                 <h2>Beautiful homes</h2>
