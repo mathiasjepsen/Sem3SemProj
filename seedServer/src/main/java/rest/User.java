@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import rest.JSON.JSONHome;
 import rest.JSON.JSONUser;
 import security.PasswordStorage;
 import security.factories.UserFacadeFactory;
@@ -29,6 +30,15 @@ public class User {
     public String getUsers() {
         List<JSONUser> jsonUsers = uf.getUsers();
         return GSON.toJson(jsonUsers);
+    }
+    
+    @GET
+    @Path("myHomes/{userName}")
+    @RolesAllowed("User")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getMyHomes(@PathParam("userName") String userName){
+        List<JSONHome> jsonHomes = uf.getMyHomes(userName);
+        return GSON.toJson(jsonHomes);
     }
 
     @GET

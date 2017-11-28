@@ -65,7 +65,6 @@ public class ApplicationConfig extends Application {
         resources.add(security.Login.class);
         resources.add(security.NotAuthorizedExceptionMapper.class);
         resources.add(security.RolesAllowedFilter.class);
-        resources.add(MultiPartFeature.class);
     }
 
 }

@@ -1,5 +1,6 @@
 package facades;
 
+import entity.Home;
 import entity.Role;
 import security.interfaces.IUserFacade;
 import entity.User;
@@ -10,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Response;
+import rest.JSON.JSONHome;
 import rest.JSON.JSONUser;
 import security.interfaces.IUser;
 import security.PasswordStorage;
@@ -96,6 +98,25 @@ public class UserFacade implements IUserFacade {
             oldUser.setPhone(user.getPhone());
             em.getTransaction().commit();
             return new JSONUser(oldUser);
+        } finally {
+            em.close();
+        }
+    }
+    
+     @Override
+    public List<JSONHome> getMyHomes(String userName)
+    {
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT h FROM HOME h JOIN h.user u WHERE u.USERNAME = "+userName);
+            List<Home> homes = q.getResultList();
+            List<JSONHome> jsonHomes = new ArrayList();
+            
+            for (Home home : homes) {
+                jsonHomes.add(new JSONHome(home));
+            }
+            
+            return jsonHomes;
         } finally {
             em.close();
         }

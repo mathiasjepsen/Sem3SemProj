@@ -53,6 +53,15 @@ public class User implements IUser, Serializable {
         roles.add(role);
         role.addUser(this);
     }
+    
+    public void addHome(Home home){
+        if (homes == null){
+            homes = new ArrayList();
+        }
+        
+        homes.add(home);
+        home.setUser(this);
+    }
 
     public List<Home> getHomes()
     {
@@ -64,6 +73,7 @@ public class User implements IUser, Serializable {
         this.homes = homes;
     }
 
+    @Override
     public List<Role> getRoles() {
         return roles;
     }

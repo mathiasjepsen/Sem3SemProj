@@ -18,6 +18,7 @@ public class JSONUser {
     private String phone;
     private String email;
     private List<String> roles;
+    private List<String> homes;
 
     public JSONUser(IUser user) {
         this.username = user.getUserName();
@@ -27,6 +28,7 @@ public class JSONUser {
         this.phone = user.getPhone();
         this.email = user.getEmail();
         this.roles = user.getRolesAsStrings();
+        this.homes = user.getHomesAsStrings();
     }
 
     public String getUsername() {
@@ -68,5 +70,18 @@ public class JSONUser {
         }
         
         return rolesAsStrings;
+    }
+    
+    public List<String> getHomesAsStrings(){
+        if (homes.isEmpty()){
+            return null;
+        }
+        
+        List<String> homesAsStrings =  new ArrayList();
+        for (String home : homes) {
+            homesAsStrings.add(home);
+        }
+        
+        return homesAsStrings;
     }
 }
