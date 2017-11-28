@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Calendar from '../components/Calendar';
 import './CalendarContainer.css';
+import userFacade from './../../facades/userFacade';
+import homeFacade from './../../facades/homeFacade';
 
 // TODO - HARDCODED DATA - pass this
 //import place from '../lib/PlaceObject.json';
@@ -40,6 +42,9 @@ export default class CalendarContainer extends Component {
 		// call redux action or which system you use
 		console.log('updated HomeObject (send to backend): ', home);
 		console.log('updated UserObject (send to backend): ', user);
+		userFacade.editUser(user);
+		homeFacade.editHome(home);
+		console.log("end of onbook")
 	}
 
 	onOpenCalendar = () => {

@@ -85,6 +85,15 @@ class homeFacade {
         })
     }
 
+    editHome = (home) => {
+        const options = fetchHelper.makeOptions("PUT", true, home);
+        fetch(URL + 'api/home/edit', {
+            method: 'PUT',
+            headers: options.headers,
+            body: options.body
+        })
+    }
+
     saveImage = (data) => {
         const options = fetchHelper.makeOptions("POST");
         fetch(URL + 'api/upload/file', {

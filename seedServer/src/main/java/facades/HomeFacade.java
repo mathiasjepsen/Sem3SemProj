@@ -83,5 +83,24 @@ public class HomeFacade implements IHomeFacade {
             em.close();
         }
     }
+    
+    
+    @Override
+    public JSONHome editHome(Home editedHome) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Home oldHome = em.find(Home.class, editedHome.getId());
+            oldHome.setAddress(editedHome.getAddress());
+            oldHome.setDescription(editedHome.getDescription());
+            oldHome.setImages(editedHome.getImage());
+            oldHome.setRatings(editedHome.getRatings());
+            oldHome.setHomeBookings(editedHome.getHomeBookings());
+            em.getTransaction().commit();
+            return new JSONHome(oldHome);
+        } finally {
+            em.close();
+        }
+    }
 
 }

@@ -3,6 +3,7 @@ package facades;
 import entity.Role;
 import security.interfaces.IUserFacade;
 import entity.User;
+import entity.UserBooking;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -94,6 +95,7 @@ public class UserFacade implements IUserFacade {
             oldUser.setlName(user.getlName());
             oldUser.setEmail(user.getEmail());
             oldUser.setPhone(user.getPhone());
+            oldUser.setBookings(user.getBookings());
             em.getTransaction().commit();
             return new JSONUser(oldUser);
         } finally {

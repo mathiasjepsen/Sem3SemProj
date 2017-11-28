@@ -12,7 +12,8 @@ public interface IHomeFacade {
     
     JSONHome getHome(Integer id);
     List<JSONHome> getAllHomes();
-    JSONHome createHome(Home place);
-    JSONHome addRate(Home editedPlace);
+    JSONHome createHome(Home home);
+    JSONHome addRate(Home editedHome);
+    JSONHome editHome(Home editedHome);
     
 }

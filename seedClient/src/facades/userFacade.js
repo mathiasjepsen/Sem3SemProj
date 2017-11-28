@@ -85,6 +85,7 @@ class UserStore {
                 lName: user.lName,
                 phone: user.phone,
                 email: user.email,
+                bookings: user.bookings
             })
         })
     }

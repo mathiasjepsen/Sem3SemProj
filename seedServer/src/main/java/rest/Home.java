@@ -46,6 +46,15 @@ public class Home {
     }
     
     @PUT
+    @Path("edit")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String editHome(String content) {
+        JSONHome jsonPlace = hf.editHome(GSON.fromJson(content, entity.Home.class));
+        return GSON.toJson(jsonPlace);
+    }
+    
+    @PUT
     @Path("rate")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

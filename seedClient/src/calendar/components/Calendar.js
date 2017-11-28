@@ -184,14 +184,14 @@ export default class Calendar extends React.Component {
       // range is in 2 diff months
       for (var day = bookedRange.from.day; day <= daysInMonth; day++) {
         const bookingPart = {
-          'username': this.props.user.username,
+          'userName': this.props.user.username,
           'date': bookedRange.from.year + '-' + bookedRange.from.month + '-' + day,
         }
         range.push(bookingPart);
       }
       for (var nextMonthDay = 1; nextMonthDay <= bookedRange.to.day; nextMonthDay++) {
         const bookingPart = {
-          'username': this.props.user.username,
+          'userName': this.props.user.username,
           'date': bookedRange.to.year + '-' + bookedRange.to.month + '-' + nextMonthDay,
         }
         range.push(bookingPart);
@@ -199,7 +199,7 @@ export default class Calendar extends React.Component {
     } else {
       for (var regularMonthDay = bookedRange.from.day; regularMonthDay <= bookedRange.to.day; regularMonthDay++) {
         const bookingPart = {
-          'username': this.props.user.username,
+          'userName': this.props.user.username,
           'date': bookedRange.from.year + '-' + bookedRange.from.month + '-' + regularMonthDay,
         }
         range.push(bookingPart);
