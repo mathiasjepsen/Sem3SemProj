@@ -6,9 +6,11 @@ import TopMenu from "./TopMenu";
 import Signup from "../authorization/Signup";
 import AllUsers from './admin/AllUsers'
 import Homes from "./home/Homes";
-import CreateHome from "./home/CreateHome"
-import Rating from './home/Rating'
-import EditUser from './user/EditUser'
+import CreateHome from "./home/CreateHome";
+import Rating from './home/Rating';
+import EditUser from './user/EditUser';
+import Details from './home/Details';
+import Map from './home/Map';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/createhome" component={CreateHome} />
         <Route path="/rate/:id" component={Rating} />
         <Route path="/edit" component={EditUser}/>
+        <Route path="/details/:id" component={Details} />
+        <Route path="/map" component={Map} />
       </Switch>
     </div>
   )

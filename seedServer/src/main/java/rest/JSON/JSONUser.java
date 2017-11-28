@@ -1,6 +1,7 @@
 package rest.JSON;
 
 import entity.Role;
+import entity.UserBooking;
 import java.util.ArrayList;
 import java.util.List;
 import security.interfaces.IUser;
@@ -19,6 +20,7 @@ public class JSONUser {
     private String email;
     private List<String> roles;
     private List<String> homes;
+    private List<UserBooking> userBookings;
 
     public JSONUser(IUser user) {
         this.username = user.getUserName();
@@ -29,6 +31,7 @@ public class JSONUser {
         this.email = user.getEmail();
         this.roles = user.getRolesAsStrings();
         this.homes = user.getHomesAsStrings();
+        this.userBookings = user.getBookings();
     }
 
     public String getUsername() {
@@ -71,6 +74,7 @@ public class JSONUser {
         
         return rolesAsStrings;
     }
+
     
     public List<String> getHomesAsStrings(){
         if (homes.isEmpty()){
@@ -84,4 +88,12 @@ public class JSONUser {
         
         return homesAsStrings;
     }
+
+
+    public List<UserBooking> getUserBookings() {
+        return userBookings;
+    }
+    
+    
+
 }

@@ -6,9 +6,11 @@
 package rest.JSON;
 
 import entity.Address;
+import entity.HomeBooking;
 import entity.Home;
 import entity.User;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -23,6 +25,8 @@ public class JSONHome {
     private HashMap<String, Double> ratings;
     private int rating;
     private User user;
+    private List<HomeBooking> homeBookings;
+
 
     public JSONHome(Home home) {
         this.id = home.getId();
@@ -32,7 +36,10 @@ public class JSONHome {
         this.ratings = home.getRatings();
         this.rating = calculateRating();
         this.id = home.getId();
+
         this.user = home.getUser();
+        this.homeBookings = home.getHomeBookings();    
+
     }
 
     private int calculateRating() {
@@ -69,6 +76,7 @@ public class JSONHome {
         return rating;
     }
 
+
     public User getUser()
     {
         return user;
@@ -80,4 +88,12 @@ public class JSONHome {
     }
     
     
+
+    public List<HomeBooking> getHomeBookings() {
+        return homeBookings;
+    }
+    
+    
+
+
 }

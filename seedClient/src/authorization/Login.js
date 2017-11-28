@@ -16,7 +16,7 @@ class Login extends Component {
                 return this.setState({ err: err.errorMessage })
             }
             this.setState({ err: "" })
-            this.props.history.push("/places")
+            this.props.history.push("/homes")
         })
     }
 

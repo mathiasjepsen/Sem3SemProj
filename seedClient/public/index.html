@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    
+    <style>
+      .form-inline {
+        margin: 20px 0;
+      }
+      .form-inline .form-group {
+        margin-bottom: 0;
+      }
+      .form-inline .form-group,
+      .form-inline .form-control,
+      .form-inline button {
+        width: 100%;
+      }
+      .bg-danger,
+      .bg-info {
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+      .map {
+        height: 300px;
+      }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,5 +49,6 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQN8JEN0LM1pP8WfSqvnwNWWmp6HsUUf4"></script>
   </body>
 </html>

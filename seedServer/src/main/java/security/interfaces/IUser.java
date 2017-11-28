@@ -1,6 +1,7 @@
 package security.interfaces;
 
 import entity.Role;
+import entity.UserBooking;
 import java.util.List;
 import security.PasswordStorage;
 
@@ -26,5 +27,7 @@ public interface IUser {
     String getEmail();
 
     List<Role> getRoles();
+    
+    List<UserBooking> getBookings();
 
 }

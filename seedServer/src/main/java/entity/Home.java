@@ -1,12 +1,19 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.ManyToOne;
+
+import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 
 /**
@@ -24,8 +31,13 @@ public class Home implements Serializable {
     private String description;
     private HashMap<String, Double> ratings;
     private String image;
+
     @ManyToOne
     private User user;
+    
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<HomeBooking> homeBookings = new ArrayList();
+
 
     public Home() {
         this.ratings = new HashMap();
@@ -87,6 +99,14 @@ public class Home implements Serializable {
 
     public void setImages(String image) {
         this.image = image;
+    }
+
+    public List<HomeBooking> getHomeBookings() {
+        return homeBookings;
+    }
+
+    public void setHomeBookings(List<HomeBooking> homeBookings) {
+        this.homeBookings = homeBookings;
     }
 
 }

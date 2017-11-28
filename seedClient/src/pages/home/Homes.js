@@ -84,9 +84,10 @@ export default class Homes extends React.Component {
                                         {home.rating}
                                     </td>
                                     <td> {this.state.userName !== "" && alreadyRated === -1 &&
-                                        <NavLink to={`/rate/${home.id}`}>rate this home</NavLink>
+                                        <NavLink className="btn btn-info" to={`/rate/${home.id}`}>rate this place</NavLink>
                                     }
                                     </td>
+                                    <td><NavLink className="btn btn-info" to={`details/${home.id}`}>see details</NavLink></td>
                                 </tr>
                             )
                         })}

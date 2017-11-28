@@ -9,7 +9,7 @@ class EditUser extends Component {
     }
 
     componentDidMount() {
-        userFacade.setEditUserObserver(this.editHandler)
+        userFacade.setEditObserver(this.editHandler)
         const user = userFacade.getUser(auth.userName);
     }
 

@@ -26,8 +26,13 @@ public class User implements IUser, Serializable {
     private String email;
     @ManyToMany
     List<Role> roles;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Home> homes;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    List<UserBooking> bookings = new ArrayList();
+
 
     public User() {
     }
@@ -76,6 +81,14 @@ public class User implements IUser, Serializable {
     @Override
     public List<Role> getRoles() {
         return roles;
+    }
+
+    public List<UserBooking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<UserBooking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override
