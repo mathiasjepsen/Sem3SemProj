@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -21,7 +21,7 @@ export default class CreateHome extends Component {
     render() {
         return (
           <View style={styles.container}>
-            <Form type={Home} /> {/* Notice the addition of the Form component */}
+            <Form type={Home} />
           </View>
         );
     }

@@ -112,7 +112,6 @@ export default class Places extends Component {
                         data={this.state.filteredPlaces}
                         extraData={this.state}
                         renderItem={({ item }) => {
-                            console.log("Heysdf")
                             return (
                                 <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
                                     <ListItem
