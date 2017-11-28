@@ -1,16 +1,17 @@
 {
   "name": "seedclient",
-  "serverURL": "http://localhost:8080/seedMaven/",  
+  "serverURL": "http://localhost:8084/seedMaven/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "find-package-json": "^1.0.0",
+    "jwt-decode": "^2.2.0",
     "lodash": "4.17.4",
     "prop-types": "15.6.0",
-    "jwt-decode": "^2.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-router-dom": "^4.2.2",
     "react-modal": "^3.1.2",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14"
   },
   "scripts": {
