@@ -1,14 +1,38 @@
-import React, { Component } from 'react'
-import { View } from 'react-native'
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import t from 'tcomb-form-native';
 
-export default class Places extends Component {
+const Form = t.form.Form;
+
+const Home = t.struct({
+    city: t.String,
+    zip: t.String,
+    street: t.String,
+    description: t.String,
+    location: t.String,
+    image: t.String
+  });
+
+export default class CreateHome extends Component {
     constructor() {
         super()
     }
 
     render() {
         return (
-            <View></View>
-        )
+          <View style={styles.container}>
+            <Form type={Home} /> {/* Notice the addition of the Form component */}
+          </View>
+        );
     }
 }    
+
+
+const styles = StyleSheet.create({
+    container: {
+      justifyContent: 'center',
+      marginTop: 50,
+      padding: 20,
+      backgroundColor: '#ffffff',
+    },
+  });
