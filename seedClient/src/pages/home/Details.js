@@ -19,10 +19,9 @@ export default class Details extends React.Component {
             homeId: props.match.params.id,
             isLoggedIn: false
         }
-
     }
 
-    componentDidMount = ()=> {
+    componentDidMount = () => {
         homeFacade.setDetailsObserver(this.homeUpdater);
         homeFacade.fetchHome(this.state.homeId);
         if (this.state.userName !== "") {
@@ -50,7 +49,7 @@ export default class Details extends React.Component {
                 <div>
                     <Link className="btn btn-success" to={`${this.props.match.url}/book`}>Book Home</Link>
                 </div>
-                <Route exact path={`${this.props.match.url}/book`} render={(props) => {   
+                <Route exact path={`${this.props.match.url}/book`} render={(props) => {
                     return (
                         <CalendarLayout>
                             <CalendarContainer

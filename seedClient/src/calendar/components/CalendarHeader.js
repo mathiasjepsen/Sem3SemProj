@@ -61,7 +61,7 @@ export default class CalendarHeader extends React.Component {
 				</div>
 				<div className='loginErrorMessage'>
 					{ errorMessage && 
-						<span>You must be logged in to book a week. Please click <a href="/login">here</a> to login</span>
+						<span>You must be logged in to book a week. Please click <a href="/#/login">here</a> to login</span>
 					}
 				</div>
       </div>
