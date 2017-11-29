@@ -31,9 +31,11 @@ public class JSONHome {
         this.description = home.getDescription();
         this.image = home.getImage();
         this.ratings = home.getRatings();
-        this.rating = calculateRating();
+        if (!this.ratings.entrySet().isEmpty()) {
+            this.rating = calculateRating();
+        }
         this.id = home.getId();
-        this.homeBookings = home.getHomeBookings();    
+        this.homeBookings = home.getHomeBookings();
     }
 
     private int calculateRating() {
@@ -45,7 +47,7 @@ public class JSONHome {
         }
         return sum / count;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -73,7 +75,5 @@ public class JSONHome {
     public List<HomeBooking> getHomeBookings() {
         return homeBookings;
     }
-    
-    
 
 }

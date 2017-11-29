@@ -32,10 +32,6 @@ class homeFacade {
                     city: home.address.city,
                     zip: home.address.zip,
                     street: home.address.street,
-                    location: home.address.location
-                },
-                ratings: {
-                    "lovro": 3.0
                 }
             })
         }).then((res) => {

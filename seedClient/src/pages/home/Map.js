@@ -16,12 +16,28 @@ var ATLANTIC_OCEAN = {
 };
 
 class Map extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isGeocodingError: false,
-            foundAddress: INITIAL_LOCATION.address
+            foundAddress: INITIAL_LOCATION.address,
+            address: {
+                city: props.city,
+                street: props.street,
+                zip: props.zip
+            }
         }
+    }
+
+    componentWillReceiveProps() {
+        var address = this.state.address
+        address.city = this.props.city
+        address.street = this.props.street
+        address.zip = this.props.zip
+
+        this.setState({
+            address
+        })
     }
 
     geocodeAddress = (address) => {
@@ -58,11 +74,8 @@ class Map extends React.Component {
         }.bind(this));
     }
 
-    handleFormSubmit = (submitEvent) => {
-        submitEvent.preventDefault();
-
-        var address = this.searchInputElement.value;
-
+    handleSearchClicked = () => {
+        var address = `${this.state.address.city}, ${this.state.address.street}, ${this.state.address.zip}`
         this.geocodeAddress(address);
     }
 
@@ -100,40 +113,22 @@ class Map extends React.Component {
         return (
             <div className="container">
 
-                <div className="row">
-                    <div className="col-sm-12">
-
-                        <form className="form-inline" onSubmit={this.handleFormSubmit}>
-                            <div className="row">
-                                <div className="col-xs-8 col-sm-10">
-
-                                    <div className="form-group">
-                                        <label className="sr-only" htmlFor="address">Address</label>
-                                        <input type="text" className="form-control input-lg" id="address" placeholder="London, United Kingdom" ref={this.setSearchInputElementReference} required />
-                                    </div>
-
-                                </div>
-                                <div className="col-xs-4 col-sm-2">
-
-                                    <button type="submit" className="btn btn-default btn-lg">
-                                        <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                    </button>
-
-                                </div>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <div className="col-sm-10">
+                                {this.state.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
                             </div>
-                        </form>
+                            <div className="col-sm-2">
+                                <button type="button" className="btn btn-default btn-lg" onClick={this.handleSearchClicked}>
+                                    <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
 
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12">
-
-                        {this.state.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
-
+                    <div className="row">
                         <div className="map" ref={this.setMapElementReference}></div>
-
                     </div>
-                </div>
             </div>
 
         )
