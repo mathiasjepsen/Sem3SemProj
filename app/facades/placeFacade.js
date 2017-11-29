@@ -26,6 +26,27 @@ class PlaceFacade {
             })
     }
 
+    createHome = (home) => {
+        fetch(URL + 'api/native/home', {
+            method: 'POST',
+            headers: options.headers,
+            body: JSON.stringify({
+                description: home.description,
+                image: home.image,
+                address: {
+                    city: home.address.city,
+                    zip: home.address.zip,
+                    street: home.address.street,
+                }
+            })
+        }).then((res) => {
+            return res.json()
+        })
+        //.then((home) => {
+        //    this.saveImage(data)
+       // })
+    }
+
     sortByRating = (props) => {
         let oldArray = props;
         let sortedArray = oldArray.sort(compareRating);
