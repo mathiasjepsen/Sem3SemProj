@@ -8,12 +8,11 @@ import Map from './Map'
 class CreateHome extends Component {
     constructor() {
         super();
-        this.state = { city: "", zip: "", street: "", description: "", image: "" }
+        this.state = { city: "", zip: "", street: "", description: "", image: "", isGeocodingError:false}
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-
         var input = document.querySelector('input[type="file"]');
         var data = new FormData();
         const splitPath = input.value.split("\\")
@@ -31,7 +30,10 @@ class CreateHome extends Component {
             image: imageName
         }
 
+
         homeFacade.createHome(home, data)
+        this.props.history.push("/homes");
+        homeFacade.fetchHomes()
     }
 
     onChange = (e) => {
@@ -41,6 +43,7 @@ class CreateHome extends Component {
     }
 
     render() {
+        console.log("isGeocodingError", this.state.isGeocodingError)
         return (
             <div>
                 <form className="form-horizontal" onSubmit={this.handleSubmit} >
@@ -93,11 +96,13 @@ class CreateHome extends Component {
                             city={this.state.city}
                             street={this.state.street}
                             zip={this.state.zip}
+                            isgeoCodingError={this.state.isGeocodingError}
                         />
                         <br></br>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-6">
+                        
                             <button className="btn btn-lg btn-primary btn-block" type="submit">Create</button>
                         </div>
                     </div>

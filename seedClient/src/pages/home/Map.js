@@ -19,7 +19,7 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isGeocodingError: false,
+            isGeocodingError: props.isGeocodingError,
             foundAddress: INITIAL_LOCATION.address,
             address: {
                 city: props.city,
@@ -34,9 +34,11 @@ class Map extends React.Component {
         address.city = this.props.city
         address.street = this.props.street
         address.zip = this.props.zip
+        var isGeocodingError = this.props.isGeocodingError
 
         this.setState({
-            address
+            address,
+            isGeocodingError
         })
     }
 
