@@ -28,7 +28,6 @@ class PlaceFacade {
     }
 
     createHome = (home) => {
-        console.log("in placeFacade, URL", URL)
         fetch(URL + 'api/native', {
             method: 'POST',
             headers: {
@@ -41,10 +40,6 @@ class PlaceFacade {
                     city: home.city,
                     zip: home.zip,
                     street: home.street,
-                    location: ''
-                },
-                ratings: {
-                    "lovro": 3.0
                 }
             })
         }).then((res) => {

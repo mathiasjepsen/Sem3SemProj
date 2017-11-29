@@ -10,7 +10,6 @@ export default class CreateHome extends Component {
             zip: '',
             street: '',
             description: '',
-            location: '',
             image: ''
             }
     }
@@ -55,14 +54,8 @@ export default class CreateHome extends Component {
                 />
                 <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    onChangeText={(location) => this.setState({ location })}
-                    placeholder='enter location'
-                    value={this.state.location}
-                />
-                <TextInput
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                     onChangeText={(image) => this.setState({ image })}
-                    placeholder='enter imageryhyj'
+                    placeholder='enter image'
                     value={this.state.image}
                 />
                 <Button
