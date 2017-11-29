@@ -10,7 +10,7 @@ class PlaceFacade {
     }
 
     fetchPlaces = () => {
-        fetch(URL + 'api/all/places')
+        fetch(URL + 'api/home')
             .then((res) => {
                 return res.json()
             })
@@ -40,6 +40,10 @@ class PlaceFacade {
                     city: home.city,
                     zip: home.zip,
                     street: home.street,
+                    location: ''
+                },
+                ratings: {
+                    "lovro": 3.0
                 }
             })
         }).then((res) => {

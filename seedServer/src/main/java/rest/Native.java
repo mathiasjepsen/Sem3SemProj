@@ -63,8 +63,9 @@ public class Native {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String createHome(String content) {
-        System.out.println("in createHome");
+        System.out.println("step 1");
         JSONHome jsonPlace = hf.createHome(GSON.fromJson(content, entity.Home.class));
+        System.out.println("step 2");
         return GSON.toJson(jsonPlace);
     }
 }
