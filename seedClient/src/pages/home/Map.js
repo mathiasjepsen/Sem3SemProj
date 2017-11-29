@@ -19,7 +19,6 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isGeocodingError: props.isGeocodingError,
             foundAddress: INITIAL_LOCATION.address,
             address: {
                 city: props.city,
@@ -34,12 +33,13 @@ class Map extends React.Component {
         address.city = this.props.city
         address.street = this.props.street
         address.zip = this.props.zip
-        var isGeocodingError = this.props.isGeocodingError
-
+        
         this.setState({
-            address,
-            isGeocodingError
+            address
         })
+
+        
+        console.log("In will receive props")
     }
 
     geocodeAddress = (address) => {
@@ -49,8 +49,9 @@ class Map extends React.Component {
 
                 this.setState({
                     foundAddress: results[0].formatted_address,
-                    isGeocodingError: false
                 });
+
+                this.props.checkGeocodingError(false)
 
                 this.map.setCenter(results[0].geometry.location);
                 this.marker.setPosition(results[0].geometry.location);
@@ -60,8 +61,9 @@ class Map extends React.Component {
 
             this.setState({
                 foundAddress: null,
-                isGeocodingError: true
             });
+            
+            this.props.checkGeocodingError(true)            
 
             this.map.setCenter({
                 lat: ATLANTIC_OCEAN.latitude,
@@ -90,7 +92,7 @@ class Map extends React.Component {
                 lat: INITIAL_LOCATION.position.latitude,
                 lng: INITIAL_LOCATION.position.longitude
             }
-        });
+        })
 
         this.marker = new window.google.maps.Marker({
             map: this.map,
@@ -118,7 +120,7 @@ class Map extends React.Component {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="col-sm-10">
-                                {this.state.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
+                                {this.props.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
                             </div>
                             <div className="col-sm-2">
                                 <button type="button" className="btn btn-default btn-lg" onClick={this.handleSearchClicked}>

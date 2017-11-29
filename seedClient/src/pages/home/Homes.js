@@ -21,6 +21,10 @@ export default class Homes extends React.Component {
         homeFacade.fetchHomes()
     }
 
+    componentDidUpdate() {
+        homeFacade.fetchHomes()
+    }
+
     homesUpdater = (homes) => {
         this.setState({
             homes
@@ -61,7 +65,6 @@ export default class Homes extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.homes.map((home, index) => {
-                            console.log("home", home)
                             var x = Object.keys(home.ratings);
                             var alreadyRated = x.indexOf(this.state.userName)
                             return (

@@ -30,10 +30,8 @@ class CreateHome extends Component {
             image: imageName
         }
 
-
         homeFacade.createHome(home, data)
         this.props.history.push("/homes");
-        homeFacade.fetchHomes()
     }
 
     onChange = (e) => {
@@ -42,8 +40,13 @@ class CreateHome extends Component {
         })
     }
 
+    checkGeocodingError = (isGeocodingError) => {
+        this.setState({
+            isGeocodingError
+        })
+    }
+
     render() {
-        console.log("isGeocodingError", this.state.isGeocodingError)
         return (
             <div>
                 <form className="form-horizontal" onSubmit={this.handleSubmit} >
@@ -96,14 +99,18 @@ class CreateHome extends Component {
                             city={this.state.city}
                             street={this.state.street}
                             zip={this.state.zip}
-                            isgeoCodingError={this.state.isGeocodingError}
+                            isGeocodingError={this.state.isGeocodingError}
+                            checkGeocodingError={this.checkGeocodingError}
                         />
                         <br></br>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-6">
-                        
+                        {!this.state.isGeocodingError ? 
                             <button className="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+                        :   
+                            <button className="btn btn-lg btn-danger btn-block" type="button">Invalid address</button>
+                        }
                         </div>
                     </div>
                 </form>
