@@ -12,11 +12,17 @@ export default class CreateHome extends Component {
             description: '',
             location: '',
             image: ''
-        };
+            }
     }
 
-    onSubmit(){
-        placeFacade.createHome()
+    onSubmit = () => {
+        const home = {
+            city : this.state.city,
+            zip : this.state.zip,
+            street : this.state.street,
+            description : this.state.description
+        }
+        placeFacade.createHome(home)
     }
 
     render() {

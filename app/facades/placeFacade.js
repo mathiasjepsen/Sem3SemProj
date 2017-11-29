@@ -27,20 +27,26 @@ class PlaceFacade {
     }
 
     createHome = (home) => {
-        fetch(URL + 'api/native/home', {
+        console.log("in placeFacade, URL", URL)
+        fetch(URL + 'api/native', {
             method: 'POST',
-            headers: options.headers,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'    
+            },
             body: JSON.stringify({
                 description: home.description,
-                image: home.image,
                 address: {
-                    city: home.address.city,
-                    zip: home.address.zip,
-                    street: home.address.street,
+                    city: home.city,
+                    zip: home.zip,
+                    street: home.street,
                 }
             })
         }).then((res) => {
             return res.json()
+        }).catch(function (error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+            throw error;
         })
         //.then((home) => {
         //    this.saveImage(data)

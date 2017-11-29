@@ -1,6 +1,6 @@
 {
   "main": "node_modules/expo/AppEntry.js",
-  "serverURL": "https://www.mathiasjepsen.dk/backend/ca3server/",
+  "serverURL": "http://localhost:8080/seedMaven/",
   "private": true,
   "dependencies": {
     "expo": "^22.0.0",
