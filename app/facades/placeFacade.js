@@ -10,6 +10,7 @@ class PlaceFacade {
     }
 
     fetchPlaces = () => {
+        console-log("URL in fetch places", URL)
         fetch(URL + 'api/home')
             .then((res) => {
                 return res.json()
