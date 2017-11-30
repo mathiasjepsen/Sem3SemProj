@@ -6,20 +6,16 @@ import auth from '../../authorization/auth';
 import userFacade from '../../facades/userFacade';
 import homeFacade from '../../facades/homeFacade';
 
-//import '../../calendar/App.css';
-
 export default class Details extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            //user:,
             home: {},
             user: {},
             userName: auth.userName,
             homeId: props.match.params.id,
             isLoggedIn: false
         }
-
     }
 
     componentDidMount = ()=> {
@@ -47,6 +43,9 @@ export default class Details extends React.Component {
     render() {
         return (
             <div>
+
+                
+
                 <div>
                     <Link className="btn btn-success" to={`${this.props.match.url}/book`}>Book Home</Link>
                 </div>
