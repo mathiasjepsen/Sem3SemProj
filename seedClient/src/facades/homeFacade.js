@@ -11,6 +11,9 @@ class homeFacade {
     setHomeObserver = (handler) => {
         this._homeHandler = handler
     }
+    setAddressObserver = (handler) => {
+        this._addressHandler = handler
+    }
 
     setDetailsObserver = (handler) => {
         this._detailsHandler = handler
@@ -19,7 +22,10 @@ class homeFacade {
     setRatingObserver = (handler) => {
         this._ratingHandler = handler
     }
-
+   
+    setHomeMapObserver = (handler) => {
+        this._homeMapHandler = handler
+    }
     createHome = (home, data) => {
         const options = fetchHelper.makeOptions("POST", true);
         fetch(URL + 'api/home', {
@@ -66,8 +72,12 @@ class homeFacade {
                 if (this._ratingHandler) {
                     this._ratingHandler(home)
                 }
+                console.log("Home in fetchHome testing", home)
                 if (this._detailsHandler) {
                     this._detailsHandler(home)
+                }
+                if(this._homeMapHandler) {
+                    this._homeMapHandler(home)
                 }
             })
     }
