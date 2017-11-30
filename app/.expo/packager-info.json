@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19002,
-  "expoServerNgrokUrl": "https://cr-2i3.azurwular.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.cr-2i3.azurwular.app.exp.direct",
-  "ngrokPid": 16364,
-  "packagerPort": 19003,
-  "packagerPid": 12008
+  "expoServerNgrokUrl": "https://z7-m2s.mathiasjepsen.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.z7-m2s.mathiasjepsen.app.exp.direct",
+  "ngrokPid": 7461,
+  "packagerPort": 19004,
+  "packagerPid": 7443
 }

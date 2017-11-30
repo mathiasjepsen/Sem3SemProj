@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet, FlatList, ScrollView } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 import { List, ListItem, ButtonGroup, SearchBar, ActivityIndicator } from 'react-native-elements'
 import placeFacade from '../facades/placeFacade'
 import { StackNavigator } from 'react-navigation'
@@ -22,7 +22,7 @@ export default class Places extends Component {
     }
 
     componentWillReceiveProps() {
-        placeFacade.fetchPlaces()        
+        placeFacade.fetchPlaces()      
     }
 
     placesUpdater = (places) => {
@@ -101,7 +101,6 @@ export default class Places extends Component {
         const { selectedIndex } = this.state
         return (
             <View>
-                <ScrollView>
                 <ButtonGroup
                     onPress={this.updateIndex}
                     selectedIndex={selectedIndex}
@@ -130,7 +129,6 @@ export default class Places extends Component {
                         keyExtractor={item => item.id}
                     />
                 </List>
-                </ScrollView>
             </View>
         )
     }
