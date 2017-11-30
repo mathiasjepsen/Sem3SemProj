@@ -44,6 +44,7 @@ class homeFacade {
             return res.json()
         }).then((home) => {
             this.saveImage(data)
+            this.fetchHomes()
         })
     }
 

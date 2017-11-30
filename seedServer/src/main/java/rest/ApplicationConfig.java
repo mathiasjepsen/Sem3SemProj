@@ -22,6 +22,7 @@ public class ApplicationConfig extends Application {
         resources.add(cors.CorsResponseFilter.class);
         resources.add(httpErrors.GenericExceptionMapper.class);
         resources.add(httpErrors.NotFoundExceptionMapper.class);
+        resources.add(MultiPartFeature.class);
         resources.add(rest.Admin.class);
         resources.add(rest.Home.class);
         resources.add(rest.Uploadimage.class);
