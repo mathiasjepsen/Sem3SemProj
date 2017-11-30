@@ -37,9 +37,6 @@ class Map extends React.Component {
         this.setState({
             address
         })
-
-        
-        console.log("In will receive props")
     }
 
     geocodeAddress = (address) => {
