@@ -10,7 +10,7 @@ class PlaceFacade {
     }
 
     fetchPlaces = () => {
-        console-log("URL in fetch places", URL)
+        //console-log("URL in fetch places", URL)
         fetch(URL + 'api/home')
             .then((res) => {
                 return res.json()
@@ -22,7 +22,7 @@ class PlaceFacade {
                 }
             })
             .catch(function (error) {
-                console.log('There has been a problem with your fetch operation: ' + error.message);
+                //console.log('There has been a problem with your fetch operation: ' + error.message);
                 throw error;
             })
     }
@@ -43,6 +43,7 @@ class PlaceFacade {
                 }
             })
         }).then((res) => {
+            this.fetchPlaces();
             return res.json()
         }).catch(function (error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
