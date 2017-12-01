@@ -112,12 +112,16 @@ export default class Places extends Component {
                         data={this.state.filteredPlaces}
                         extraData={this.state}
                         renderItem={({ item }) => {
+                            var avatar = `https://mathiasjepsen.dk/backend/ca3/images/${item.image}`
+                            if (item.image === undefined) {
+                                avatar = `https://mathiasjepsen.dk/backend/ca3/images/pocketFitIcon.png`
+                            }
                             return (
                                 <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
                                     <ListItem
                                         title={`${item.description}`}
                                         subtitle={`${item.address.city} - ${item.address.street}`}
-                                        avatar={{ uri: `https://mathiasjepsen.dk/backend/ca3/images/${item.image}` }}
+                                        avatar={{ uri: avatar }}
                                         containerStyle={{ borderBottomWidth: 0 }}
                                     />
                                 </TouchableOpacity>
@@ -125,7 +129,6 @@ export default class Places extends Component {
                         }}
                         ItemSeparatorComponent={this.renderSeparator}
                         ListHeaderComponent={this.renderHeader}
-                        ListFooterComponent={this.renderFooter}      
                         keyExtractor={item => item.id}
                     />
                 </List>
