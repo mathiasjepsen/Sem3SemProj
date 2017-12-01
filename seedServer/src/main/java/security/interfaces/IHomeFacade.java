@@ -1,5 +1,6 @@
 package security.interfaces;
 
+import entity.Address;
 import entity.Home;
 import java.util.List;
 import rest.JSON.JSONHome;
@@ -11,6 +12,7 @@ import rest.JSON.JSONHome;
 public interface IHomeFacade {
     
     JSONHome getHome(Integer id);
+    JSONHome getHomeAddress(Integer id);
     List<JSONHome> getAllHomes();
     JSONHome createHome(Home place);
     JSONHome addRate(Home editedPlace);

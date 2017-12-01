@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entity.Address;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
@@ -42,8 +43,17 @@ public class Home {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String getHome(@PathParam("id") Integer id) {
         JSONHome jsonPlace = hf.getHome(id);
+        return GSON.toJson(jsonPlace);
+    }
+    @GET
+    @Path("details/{address}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String getHomeAddress(@PathParam("address") Integer id) {
+        JSONHome jsonPlace = hf.getHomeAddress(id);
         return GSON.toJson(jsonPlace);
     }
     
