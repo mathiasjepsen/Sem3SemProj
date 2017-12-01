@@ -7,13 +7,10 @@ import userFacade from '../../facades/userFacade';
 import homeFacade from '../../facades/homeFacade';
 import MapDetails from './MapDetails'
 
-//import '../../calendar/App.css';
-
 export default class Details extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            //user:,
             home: {},
             user: {},
             address: {
@@ -25,7 +22,6 @@ export default class Details extends React.Component {
             homeId: props.match.params.id,
             isLoggedIn: false
         }
-
     }
 
     componentDidMount = ()=> {

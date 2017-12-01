@@ -22,7 +22,7 @@ export default class Places extends Component {
     }
 
     componentWillReceiveProps() {
-        placeFacade.fetchPlaces()        
+        placeFacade.fetchPlaces()      
     }
 
     placesUpdater = (places) => {
