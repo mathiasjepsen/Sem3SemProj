@@ -22,8 +22,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 @Path("upload")
 public class Uploadimage {
 
-    public static final String FILE_LOCATION = "/var/lib/tomcat8/webapps/ca3/images/";
-//    public static final String FILE_LOCATION = "/Users/mathiasjepsen/Desktop/";
+//    public static final String FILE_LOCATION = "/var/lib/tomcat8/webapps/ca3/images/";
+    public static final String FILE_LOCATION = "/Users/mathiasjepsen/Desktop/";
     
     public Uploadimage() {
     }

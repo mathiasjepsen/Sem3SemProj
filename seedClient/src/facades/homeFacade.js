@@ -26,6 +26,11 @@ class homeFacade {
     setHomeMapObserver = (handler) => {
         this._homeMapHandler = handler
     }
+
+    setIdObserver = (handler) => {
+        this._homeIdHandler = handler
+    }
+
     createHome = (home, data) => {
         const options = fetchHelper.makeOptions("POST", true);
         fetch(URL + 'api/home', {
@@ -45,6 +50,9 @@ class homeFacade {
         }).then((home) => {
             this.saveImage(data)
             this.fetchHomes()
+            if (this._homeIdHandler) {
+                this._homeIdHandler(home.id)
+            }
         })
     }
 
