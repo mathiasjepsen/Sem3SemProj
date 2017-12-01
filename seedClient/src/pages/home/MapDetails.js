@@ -1,3 +1,5 @@
+import homeFacade from '../../facades/homeFacade'
+
 var React = require('react');
 
 var INITIAL_LOCATION = {
@@ -8,18 +10,19 @@ var INITIAL_LOCATION = {
     }
 };
 
-var INITIAL_MAP_ZOOM_LEVEL = 8;
+var INITIAL_MAP_ZOOM_LEVEL = 16;
 
 var ATLANTIC_OCEAN = {
     latitude: 29.532804,
     longitude: -55.491477
 };
 
-class Map extends React.Component {
+export default class MapDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             foundAddress: INITIAL_LOCATION.address,
+            isGeocodingError: false,
             address: {
                 city: props.city,
                 street: props.street,
@@ -27,7 +30,7 @@ class Map extends React.Component {
             }
         }
     }
-
+/*
     componentWillReceiveProps() {
         var address = this.state.address
         address.city = this.props.city
@@ -37,8 +40,9 @@ class Map extends React.Component {
         this.setState({
             address
         })
-    }
 
+    }
+*/
     geocodeAddress = (address) => {
         this.geocoder.geocode({ 'address': address }, function handleResults(results, status) {
 
@@ -46,9 +50,8 @@ class Map extends React.Component {
 
                 this.setState({
                     foundAddress: results[0].formatted_address,
+                    isGeocodingError: false
                 });
-
-                this.props.checkGeocodingError(false)
 
                 this.map.setCenter(results[0].geometry.location);
                 this.marker.setPosition(results[0].geometry.location);
@@ -58,9 +61,9 @@ class Map extends React.Component {
 
             this.setState({
                 foundAddress: null,
+                isGeocodingError: true
             });
             
-            this.props.checkGeocodingError(true)            
 
             this.map.setCenter({
                 lat: ATLANTIC_OCEAN.latitude,
@@ -74,15 +77,26 @@ class Map extends React.Component {
 
         }.bind(this));
     }
+homeMapHandler = (address) => {
+    var address = this.state.address
+    address.city = this.props.city
+    address.street = this.props.street
+    address.zip = this.props.zip
+    
+    this.setState({
+        address
+    })
 
-    handleSearchClicked = () => {
-        var address = `${this.state.address.city}, ${this.state.address.street}, ${this.state.address.zip}`
-        this.geocodeAddress(address);
-    }
+ address = `${this.state.address.city}, ${this.state.address.street}, ${this.state.address.zip}`
+    this.geocodeAddress(address);
+    console.log("in home map handler", address)
+    
+}
 
     componentDidMount = () => {
         var mapElement = this.mapElement;
-
+        homeFacade.setHomeMapObserver(this.homeMapHandler)
+        
         this.map = new window.google.maps.Map(mapElement, {
             zoom: INITIAL_MAP_ZOOM_LEVEL,
             center: {
@@ -116,14 +130,6 @@ class Map extends React.Component {
 
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="col-sm-10">
-                                {this.props.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
-                            </div>
-                            <div className="col-sm-2">
-                                <button type="button" className="btn btn-default btn-lg" onClick={this.handleSearchClicked}>
-                                    <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </div>
                         </div>
 
                     </div>
@@ -135,5 +141,3 @@ class Map extends React.Component {
         )
     }
 }
-
-module.exports = Map
