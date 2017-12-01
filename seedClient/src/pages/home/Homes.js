@@ -21,8 +21,6 @@ export default class Homes extends React.Component {
         homeFacade.fetchHomes()
     }
 
-
-
     homesUpdater = (homes) => {
         this.setState({
             homes
