@@ -20,17 +20,14 @@ public class Address implements Serializable {
     private String city;
     private String zip;
     private String street;
-    @Column(name = "GPS_LOCATION", nullable = true)
-    private String location;
 
     public Address() {
     }
 
-    public Address(String city, String zip, String street, String location) {
+    public Address(String city, String zip, String street) {
         this.city = city;
         this.zip = zip;
         this.street = street;
-        this.location = location;
     }
 
     public Long getId() {
@@ -48,9 +45,4 @@ public class Address implements Serializable {
     public String getStreet() {
         return street;
     }
-
-    public String getLocation() {
-        return location;
-    }
-
 }
