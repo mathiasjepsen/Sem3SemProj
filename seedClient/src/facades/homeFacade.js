@@ -11,6 +11,9 @@ class homeFacade {
     setHomeObserver = (handler) => {
         this._homeHandler = handler
     }
+    setAddressObserver = (handler) => {
+        this._addressHandler = handler
+    }
 
     setDetailsObserver = (handler) => {
         this._detailsHandler = handler
@@ -18,6 +21,14 @@ class homeFacade {
 
     setRatingObserver = (handler) => {
         this._ratingHandler = handler
+    }
+   
+    setHomeMapObserver = (handler) => {
+        this._homeMapHandler = handler
+    }
+
+    setIdObserver = (handler) => {
+        this._homeIdHandler = handler
     }
 
     createHome = (home, data) => {
@@ -32,16 +43,16 @@ class homeFacade {
                     city: home.address.city,
                     zip: home.address.zip,
                     street: home.address.street,
-                    location: home.address.location
-                },
-                ratings: {
-                    "lovro": 3.0
                 }
             })
         }).then((res) => {
             return res.json()
         }).then((home) => {
             this.saveImage(data)
+            this.fetchHomes()
+            if (this._homeIdHandler) {
+                this._homeIdHandler(home.id)
+            }
         })
     }
 
@@ -70,8 +81,12 @@ class homeFacade {
                 if (this._ratingHandler) {
                     this._ratingHandler(home)
                 }
+                console.log("Home in fetchHome testing", home)
                 if (this._detailsHandler) {
                     this._detailsHandler(home)
+                }
+                if(this._homeMapHandler) {
+                    this._homeMapHandler(home)
                 }
             })
     }

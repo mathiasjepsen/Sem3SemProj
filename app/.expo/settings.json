@@ -5,5 +5,9 @@
   "strict": false,
   "minify": false,
   "urlType": "exp",
+<<<<<<< HEAD
   "urlRandomness": "ib-fn6"
+=======
+  "urlRandomness": "z7-m2s"
+>>>>>>> master
 }

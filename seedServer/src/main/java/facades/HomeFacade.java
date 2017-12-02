@@ -1,5 +1,6 @@
 package facades;
 
+import entity.Address;
 import entity.Home;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,18 @@ public class HomeFacade implements IHomeFacade {
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("SELECT h from HOME h where h.id = :Id");
+            q.setParameter("Id", id);
+            Home home = (Home) q.getSingleResult();
+            return new JSONHome(home);
+        } finally {
+            em.close();
+        }
+    }
+     @Override
+    public JSONHome getHomeAddress(Integer id) {
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT h from HOME h where h.address_id = :Id");
             q.setParameter("Id", id);
             Home home = (Home) q.getSingleResult();
             return new JSONHome(home);
