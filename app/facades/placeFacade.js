@@ -10,7 +10,8 @@ class PlaceFacade {
     }
 
     fetchPlaces = () => {
-        fetch(URL + 'api/all/places')
+        //console-log("URL in fetch places", URL)
+        fetch(URL + 'api/home')
             .then((res) => {
                 return res.json()
             })
@@ -21,9 +22,36 @@ class PlaceFacade {
                 }
             })
             .catch(function (error) {
-                console.log('There has been a problem with your fetch operation: ' + error.message);
+                //console.log('There has been a problem with your fetch operation: ' + error.message);
                 throw error;
             })
+    }
+
+    createHome = (home) => {
+        fetch(URL + 'api/native', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'    
+            },
+            body: JSON.stringify({
+                description: home.description,
+                address: {
+                    city: home.city,
+                    zip: home.zip,
+                    street: home.street,
+                }
+            })
+        }).then((res) => {
+            this.fetchPlaces();
+            return res.json()
+        }).catch(function (error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+            throw error;
+        })
+        //.then((home) => {
+        //    this.saveImage(data)
+       // })
     }
 
     sortByRating = (props) => {

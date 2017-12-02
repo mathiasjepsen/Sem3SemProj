@@ -5,6 +5,7 @@ import Rating from '../home/Rating'
 import auth from '../../authorization/auth'
 import { NavLink, Route } from 'react-router-dom';
 import Details from '../home/Details';
+const imageURL = require("../../../package.json").imageURL;
 
 export default class Homes extends React.Component {
     constructor() {
@@ -69,7 +70,7 @@ export default class Homes extends React.Component {
                             var alreadyRated = x.indexOf(this.state.userName)
                             return (
                                 <tr key={index}>
-                                    <td><img src={`https://mathiasjepsen.dk/backend/ca3/images/${home.image}`} style={{ width: 50, height: 50 }} /></td>
+                                    <td><img src={`${imageURL}/${home.image}`} style={{ width: 50, height: 50 }} /></td>
                                     <td>
                                         {home.address.city}
                                     </td>

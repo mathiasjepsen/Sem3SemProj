@@ -55,9 +55,9 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
-//            Address address = new Address("London", "2000", "First Avenue", "124312");
-//            Address address2 = new Address("Paris", "3000", "Second Boulevard", "42142");
-//            Address address3 = new Address("Copenhagen", "4000", "Third Quadrant", "12412");
+//            Address address = new Address("London", "2000", "First Avenue");
+//            Address address2 = new Address("Paris", "3000", "Second Boulevard");
+//            Address address3 = new Address("Copenhagen", "4000", "Third Quadrant");
 //            User user1 = new User("mathias", "1234", "Mathias", "Jepsen", "123325234", "mathias@wpsnet.com");
 //            User user2 = new User("thomas", "1234", "Thomas", "Thimothee", "23442635", "thomas@thom.com");
 //            User user3 = new User("dimitri", "1234", "Dim", "Dimitri", "456789", "dim@dim.com");

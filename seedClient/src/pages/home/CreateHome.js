@@ -11,6 +11,10 @@ class CreateHome extends Component {
         this.state = { city: "", zip: "", street: "", description: "", image: "", isGeocodingError:false}
     }
 
+    componentDidMount() {
+        homeFacade.setIdObserver(this.homeIdWasCreated) 
+    }
+
     handleSubmit = (event) => {
         event.preventDefault()
         var input = document.querySelector('input[type="file"]');
@@ -32,6 +36,10 @@ class CreateHome extends Component {
 
         homeFacade.createHome(home, data)
         this.props.history.push("/homes");
+    }
+
+    homeIdWasCreated = (id) => {
+        this.props.history.push(`/details/${id}`);        
     }
 
     onChange = (e) => {

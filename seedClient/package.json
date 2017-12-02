@@ -1,6 +1,7 @@
 {
   "name": "seedclient",
   "serverURL": "http://localhost:8080/seedMaven/",
+  "imageURL": "https://www.mathiasjepsen.dk/backend/ca3/images",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
