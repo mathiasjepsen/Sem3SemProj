@@ -323,7 +323,7 @@ static NSString * const kCompContainerAnimationKey = @"play";
   animation.delegate = self;
   animation.removedOnCompletion = NO;
   if (offset != 0) {
-    animation.beginTime = CACurrentMediaTime() - offset;
+    animation.beginTime = CACurrentMediaTime() - (offset * 1 / _animationSpeed);
   }
   [_compContainer addAnimation:animation forKey:kCompContainerAnimationKey];
   _isAnimationPlaying = YES;
@@ -381,7 +381,6 @@ static NSString * const kCompContainerAnimationKey = @"play";
     [self _callCompletionIfNecessary:NO];
   }
 }
-
 
 - (void)setLoopAnimation:(BOOL)loopAnimation {
   _loopAnimation = loopAnimation;
@@ -456,7 +455,6 @@ static NSString * const kCompContainerAnimationKey = @"play";
   }
   return [_compContainer convertRect:rect fromLayer:self.layer toLayerNamed:layerName];
 }
-
 
 - (void)setValue:(nonnull id)value
       forKeypath:(nonnull NSString *)keypath
@@ -562,6 +560,7 @@ static NSString * const kCompContainerAnimationKey = @"play";
   } else {
     // The view is being detached, capture information that need to be restored later.
     if (_isAnimationPlaying) {
+        [self pause];
       _shouldRestoreStateWhenAttachedToWindow = YES;
       _completionBlockToRestoreWhenAttachedToWindow = _completionBlock;
       _completionBlock = nil;

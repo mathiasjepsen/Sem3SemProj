@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "expoServerNgrokUrl": "https://z7-m2s.mathiasjepsen.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.z7-m2s.mathiasjepsen.app.exp.direct",
-  "ngrokPid": 8764,
-  "packagerPort": 19004,
-  "packagerPid": 8753
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 13565,
+  "expoServerNgrokUrl": "https://ib-fn6.mathiasjepsen.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.ib-fn6.mathiasjepsen.app.exp.direct",
+  "ngrokPid": 13576
 }

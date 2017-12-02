@@ -33,6 +33,7 @@ export default class CalendarContainer extends Component {
 					isOpen={isOpen}
 					onBook={this.onBook.bind(this)}
 					onCloseCalendar={this.onCloseCalendar.bind(this)}
+					isLoggedIn={this.state.isLoggedIn}
 				/>
 			</div>
 		);
