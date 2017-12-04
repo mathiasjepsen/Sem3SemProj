@@ -5,6 +5,7 @@
  */
 package Spike;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,8 +33,11 @@ public class Role {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void addUsers( User user) {
+        if (users == null) {
+            users = new ArrayList();
+        }
+        users.add(user);
     }
     
     
