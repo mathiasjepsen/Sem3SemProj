@@ -24,7 +24,7 @@ public class HomeBooking implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String userName;
-    private String date ;
+    private String date;
 
     public HomeBooking() {
     }
