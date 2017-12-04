@@ -44,6 +44,10 @@ export default class Homes extends React.Component {
         homeFacade.sortByZip(this.state.homes)
     }
 
+    deleteHome = (e) => {
+        console.log("e.target", e.target)
+    }
+
     render() {
         console.log("Homes", this.state.homes)
         return (
@@ -94,6 +98,8 @@ export default class Homes extends React.Component {
                                     }
                                     </td>
                                     <td><NavLink className="btn btn-info" to={`details/${home.id}`}>see details</NavLink></td>
+                                    <td><input type='button' className="btn btn-danger" onClick={this.deleteHome} id={home.id}/>
+                                        </td>
                                 </tr>
                             )
                         })}
