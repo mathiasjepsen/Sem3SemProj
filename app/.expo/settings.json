@@ -5,13 +5,6 @@
   "strict": false,
   "minify": false,
   "urlType": "exp",
-<<<<<<< HEAD
   "urlRandomness": "ib-fn6"
-=======
-<<<<<<< HEAD
-  "urlRandomness": "ib-fn6"
-=======
-  "urlRandomness": "z7-m2s"
->>>>>>> master
->>>>>>> 0558b6aabb51958f4ae6c0f29b897850683c5e9a
+
 }
