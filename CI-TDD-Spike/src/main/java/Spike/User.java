@@ -1,14 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Spike;
+
+import java.util.List;
 
 /**
  *
  * @author mathiasjepsen
  */
 public class User {
+    
+    private String username;
+    private String passwordHash;
+    private String fName;
+    private String lName;
+    private String phone;
+    private String email;
+    private List<Role> roles;
+    private List<UserBooking> bookings;
+    
+    public User(String username, String passwordHash, String fName, String lName, String phone, String email) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.fName = fName;
+        this.lName = lName;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public List<UserBooking> getBookings() {
+        return bookings;
+    }
+    
+    
+    
+    
     
 }
