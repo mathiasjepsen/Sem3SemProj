@@ -39,6 +39,11 @@ public class Role {
         }
         users.add(user);
     }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+    
     
     
     

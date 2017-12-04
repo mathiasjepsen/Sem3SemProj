@@ -31,7 +31,6 @@ public class JSONHome {
         this.description = home.getDescription();
         this.image = home.getImage();
         this.ratings = home.getRatings();
-        System.out.println("get ratings in JSONHome" + home.getRatings());
         if (!this.ratings.entrySet().isEmpty()) {
             this.rating = calculateRating();
         }
