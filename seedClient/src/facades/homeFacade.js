@@ -22,7 +22,7 @@ class homeFacade {
     setRatingObserver = (handler) => {
         this._ratingHandler = handler
     }
-   
+
     setHomeMapObserver = (handler) => {
         this._homeMapHandler = handler
     }
@@ -85,7 +85,7 @@ class homeFacade {
                 if (this._detailsHandler) {
                     this._detailsHandler(home)
                 }
-                if(this._homeMapHandler) {
+                if (this._homeMapHandler) {
                     this._homeMapHandler(home)
                 }
             })

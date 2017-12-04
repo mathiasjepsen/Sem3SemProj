@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import userFacade from '../../facades/userFacade';
 import homeFacade from '../../facades/homeFacade';
+import adminFacade from '../../facades/adminFacade';
 import Rating from '../home/Rating'
 import auth from '../../authorization/auth'
 import { NavLink, Route } from 'react-router-dom';
@@ -12,17 +13,14 @@ export default class Homes extends React.Component {
         super();
         this.state = {
             homes: [],
-            userName: auth.userName
+            userName: auth.userName,
+            isAdmin: auth.isAdmin
         }
     }
 
     componentDidMount() {
         homeFacade.setHomeObserver(this.homesUpdater)
         homeFacade.setSortObserver(this.homesUpdater)
-        homeFacade.fetchHomes()
-    }
-
-    componentDidUpdate() {
         homeFacade.fetchHomes()
     }
 
@@ -44,12 +42,11 @@ export default class Homes extends React.Component {
         homeFacade.sortByZip(this.state.homes)
     }
 
-    deleteHome = (e) => {
-        console.log("e.target", e.target)
+    deleteHome = (buttonEvent) => {
+        adminFacade.deleteHome(buttonEvent.target.id)
     }
 
     render() {
-        console.log("Homes", this.state.homes)
         return (
             <div>
                 <h2>Beautiful homes</h2>
@@ -98,8 +95,9 @@ export default class Homes extends React.Component {
                                     }
                                     </td>
                                     <td><NavLink className="btn btn-info" to={`details/${home.id}`}>see details</NavLink></td>
-                                    <td><input type='button' className="btn btn-danger" onClick={this.deleteHome} id={home.id}/>
-                                        </td>
+                                    {this.state.isAdmin &&
+                                        <td><button className="btn btn-danger" onClick={this.deleteHome} id={home.id}>Delete</button></td>
+                                    }
                                 </tr>
                             )
                         })}

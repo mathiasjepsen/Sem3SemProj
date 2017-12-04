@@ -2,10 +2,10 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import entity.Address;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -48,6 +48,7 @@ public class Home {
         JSONHome jsonPlace = hf.getHome(id);
         return GSON.toJson(jsonPlace);
     }
+    
     @GET
     @Path("details/{address}")
     @Produces(MediaType.APPLICATION_JSON)

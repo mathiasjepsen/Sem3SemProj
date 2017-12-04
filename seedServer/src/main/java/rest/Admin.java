@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import rest.JSON.JSONHome;
 import rest.JSON.JSONUser;
 import security.PasswordStorage;
 import security.factories.AdminFacadeFactory;
@@ -31,6 +32,15 @@ public class Admin {
         return GSON.toJson(jsonUser);
     }
 
+    @DELETE
+    @Path("home/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String deleteHome(@PathParam("id") Integer id) {
+        JSONHome jsonHome = af.deleteHome(id);
+        return GSON.toJson(jsonHome);
+    }
+    
     @PUT
     @Path("user")
     @Produces(MediaType.APPLICATION_JSON)

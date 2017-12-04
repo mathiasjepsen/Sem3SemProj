@@ -1,9 +1,11 @@
 package facades;
 
+import entity.Home;
 import entity.Role;
 import entity.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import rest.JSON.JSONHome;
 import rest.JSON.JSONUser;
 import security.interfaces.IAdminFacade;
 import security.interfaces.IUser;
@@ -89,4 +91,19 @@ public class AdminFacade implements IAdminFacade {
             em.close();
         }
     }
+    
+    @Override
+    public JSONHome deleteHome(Integer id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Home home = em.find(Home.class, id);
+            em.remove(home);
+            em.getTransaction().commit();
+            return new JSONHome(home);
+        } finally {
+            em.close();
+        }
+    }
+    
 }

@@ -18,7 +18,8 @@ export default class CreateHome extends Component {
     }
 
 
-    onSubmit = (navigate) => {
+    onSubmit = () => {
+        const { navigate } = this.props.navigation;        
         const home = {
             city: this.state.city,
             zip: this.state.zip,
@@ -26,7 +27,7 @@ export default class CreateHome extends Component {
             description: this.state.description
         }
         placeFacade.createHome(home)
-
+        navigate("Places")
     }
 
     render() {

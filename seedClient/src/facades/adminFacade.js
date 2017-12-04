@@ -1,5 +1,6 @@
 import fetchHelper, { errorChecker } from "./fetchHelpers"
 import userFacade from './userFacade'
+import homeFacade from './homeFacade'
 const URL = require("../../package.json").serverURL;
 
 
@@ -27,6 +28,17 @@ class AdminStore {
             userFacade.getAllUsers()
         })
     }
+
+    deleteHome = (id) => {
+        const options = fetchHelper.makeOptions("DELETE", true);
+        fetch(URL + 'api/admin/home/' + id, {
+            method: 'DELETE',
+            headers: options.headers
+        }).then(() => {
+            homeFacade.fetchHomes()
+        })
+    }
+
 
     deleteUser = (username) => {
         const options = fetchHelper.makeOptions("DELETE", true);
