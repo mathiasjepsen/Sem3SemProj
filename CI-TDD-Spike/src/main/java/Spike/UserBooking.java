@@ -21,7 +21,6 @@ public class UserBooking {
         this.date = date;
     }
     
-
     public int getHomeId() {
         return homeId;
     }

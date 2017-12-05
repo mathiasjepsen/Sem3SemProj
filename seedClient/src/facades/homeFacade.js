@@ -81,7 +81,6 @@ class homeFacade {
                 if (this._ratingHandler) {
                     this._ratingHandler(home)
                 }
-                console.log("Home in fetchHome testing", home)
                 if (this._detailsHandler) {
                     this._detailsHandler(home)
                 }
@@ -106,6 +105,8 @@ class homeFacade {
             method: 'PUT',
             headers: options.headers,
             body: options.body
+        }).then(() => {
+            this.fetchHome(home.id)
         })
     }
 

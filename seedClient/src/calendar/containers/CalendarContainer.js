@@ -18,6 +18,7 @@ export default class CalendarContainer extends Component {
 			home: this.props.home,
 			isLoggedIn: this.props.isLoggedIn
 		};
+		console.log("state cal co", this.state)
 	}
 
 
@@ -25,9 +26,9 @@ export default class CalendarContainer extends Component {
 		const { isOpen } = this.state;
 		return (
 			<div className='calendarContainer'>
-				<button onClick={this.onOpenCalendar.bind(this)}>Open Calendar</button>
+			 {/* <button onClick={this.onOpenCalendar.bind(this)}>Open Calendar</button> */}
 				<Calendar
-					disablePast
+				//	disablePast
 					home={this.state.home}
 					user={this.state.user}
 					isOpen={isOpen}
@@ -41,11 +42,11 @@ export default class CalendarContainer extends Component {
 
 	onBook = (home, user) => {
 		// call redux action or which system you use
-		console.log('updated HomeObject (send to backend): ', home);
-		console.log('updated UserObject (send to backend): ', user);
 		userFacade.editUser(user);
 		homeFacade.editHome(home);
-		console.log("end of onbook")
+		if (this._detailsHandler) {
+			this._detailsHandler(home, user)
+		}
 	}
 
 	onOpenCalendar = () => {
@@ -54,5 +55,6 @@ export default class CalendarContainer extends Component {
 
 	onCloseCalendar = () => {
 		this.setState({ isOpen: false });
+		this.props.history.push(`details/${this.state.home.id}`);
 	}
 }

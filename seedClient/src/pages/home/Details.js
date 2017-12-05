@@ -20,13 +20,15 @@ export default class Details extends React.Component {
             },
             userName: auth.userName,
             homeId: props.match.params.id,
-            isLoggedIn: false
+            isLoggedIn: auth.isloggedIn
         }
     }
 
     componentDidMount = () => {
         homeFacade.setDetailsObserver(this.homeUpdater);
         homeFacade.fetchHome(this.state.homeId);
+        userFacade.setDetailsObserver(this.userUpdater);
+        userFacade.getUser(this.state.userName);
     }
 
     homeUpdater = (home) => {
@@ -39,7 +41,6 @@ export default class Details extends React.Component {
         this.setState({
             home,
             address: newAddress
-
         })
     }
 

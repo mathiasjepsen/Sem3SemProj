@@ -87,6 +87,8 @@ class UserStore {
                 email: user.email,
                 bookings: user.bookings
             })
+        }).then(() => {
+            this.getUser(user.username)
         })
     }
 }

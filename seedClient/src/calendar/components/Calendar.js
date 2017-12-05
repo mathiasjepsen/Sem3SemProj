@@ -38,7 +38,6 @@ export default class Calendar extends React.Component {
             home: props.home,
             isLoggedIn: props.isLoggedIn
         };
-        console.log("props in calen", this.props)
     }
 
     render() {
