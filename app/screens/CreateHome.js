@@ -31,7 +31,6 @@ export default class CreateHome extends Component {
     }
 
     render() {
-
         return (
             <View style={{
                 flex: 1,
